@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Salário Líquido 2025 Portugal | SalárioNet</title>
+  <meta name="description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social para trabalho por conta de outrem e recibos verdes.">
+  <meta name="keywords" content="calculadora salário líquido, IRS 2025, segurança social, recibo verde, salário Portugal, desconto IRS, salário bruto líquido, tabelas IRS 2025, retenção na fonte">
+  <meta name="author" content="SalárioNet">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora Salário Líquido 2025 Portugal | SalárioNet">
+  <meta property="og:description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social para trabalho por conta de outrem e recibos verdes.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_PT">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Calculadora Salário Líquido 2025 Portugal | SalárioNet">
+  <meta name="twitter:description" content="Calcula o teu salário líquido em Portugal para 2025.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       CSS VARIABLES & RESET
+    ========================================= */
+    :root {
+      --green-dark: #1a472a;
+      --green-mid: #2d6a4f;
+      --green-light: #40916c;
+      --green-accent: #52b788;
+      --green-bright: #74c69d;
+
+      --bg-primary: #0f1512;
+      --bg-secondary: #161e18;
+      --bg-card: #1c2820;
+      --bg-input: #222e26;
+      --bg-hover: #2a3a2e;
+
+      --text-primary: #e8f5e9;
+      --text-secondary: #a5c4aa;
+      --text-muted: #6b8f72;
+      --text-label: #c8deca;
+
+      --border-color: #2a3a2e;
+      --border-focus: #52b788;
+
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.5);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+
+      --transition: 0.2s ease;
+
+      /* Ad rail width — how far the page shifts on very wide screens */
+      --rail-w: 160px;
+      --rail-gap: 16px;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f0f7f2;
+      --bg-secondary: #e8f5eb;
+      --bg-card: #ffffff;
+      --bg-input: #f5faf6;
+      --bg-hover: #e8f5eb;
+      --text-primary: #1a2e1e;
+      --text-secondary: #2d6a4f;
+      --text-muted: #5a8a65;
+      --text-label: #2d4a32;
+      --border-color: #c8e6c9;
+      --border-focus: #40916c;
+      --shadow-sm: 0 2px 8px rgba(26,71,42,0.08);
+      --shadow-md: 0 4px 20px rgba(26,71,42,0.12);
+      --shadow-lg: 0 8px 40px rgba(26,71,42,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+      /* Extra bottom padding for sticky bottom banner on mobile */
+      padding-bottom: 64px;
+    }
+
+    /* =========================================
+       AD SYSTEM — PLACEHOLDERS
+       Replace each .ad-placeholder with your
+       actual AdSense <ins> tag.
+    ========================================= */
+    .ad-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .ad-placeholder {
+      background: var(--bg-card);
+      border: 1.5px dashed var(--border-color);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* ── 1. STICKY TOP BANNER ────────────────── */
+    /* 728×90 desktop / 320×50 mobile */
+    #ad-sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 6px 0;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    #ad-sticky-top .ad-placeholder {
+      width: min(728px, 100%);
+      height: 90px;
+      margin: 0 auto;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+    @media (max-width: 600px) {
+      #ad-sticky-top .ad-placeholder { height: 50px; }
+    }
+
+    /* ── 2. BELOW-HEADER BANNER ─────────────── */
+    /* 728×90, full width strip */
+    .ad-strip {
+      margin: 0 0 20px;
+      text-align: center;
+    }
+    .ad-strip .ad-placeholder {
+      width: min(728px, 100%);
+      height: 90px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .ad-strip .ad-placeholder { height: 50px; }
+    }
+
+    /* ── 3. IN-CONTENT RECTANGLE ────────────── */
+    /* 300×250 or 336×280 centred */
+    .ad-rect {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .ad-rect .ad-placeholder {
+      width: min(336px, 100%);
+      height: 280px;
+      margin: 0 auto;
+    }
+
+    /* ── 4. LEADERBOARD ─────────────────────── */
+    /* 728×90, centred */
+    .ad-leader {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .ad-leader .ad-placeholder {
+      width: min(728px, 100%);
+      height: 90px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .ad-leader .ad-placeholder { height: 50px; }
+    }
+
+    /* ── 5. DESKTOP SIDE RAILS ──────────────── */
+    /* 160×600 skyscrapers, visible ≥1100 px */
+    .rail {
+      display: none;
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+    }
+    .rail-left  { left: calc(50% - 360px - var(--rail-w) - var(--rail-gap)); }
+    .rail-right { right: calc(50% - 360px - var(--rail-w) - var(--rail-gap)); }
+    .rail .ad-placeholder {
+      width: 160px;
+      height: 600px;
+    }
+    @media (min-width: 1100px) {
+      .rail { display: block; }
+    }
+
+    /* ── 6. STICKY BOTTOM BANNER (mobile) ────── */
+    /* 320×50, fixed at the bottom */
+    #ad-sticky-bottom {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 6px 0 6px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    #ad-sticky-bottom .ad-placeholder {
+      width: min(320px, 100%);
+      height: 50px;
+      margin: 0 auto;
+      border-radius: 0;
+    }
+    #ad-sticky-bottom .close-btn {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 16px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 4px;
+    }
+    @media (max-width: 768px) {
+      #ad-sticky-bottom { display: block; }
+    }
+    /* on desktop the sticky-bottom is hidden so padding-bottom not needed */
+    @media (min-width: 769px) {
+      body { padding-bottom: 0; }
+    }
+
+    /* =========================================
+       LAYOUT
+    ========================================= */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* =========================================
+       HEADER
+    ========================================= */
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+      background-color: var(--bg-primary);
+      transition: background-color 0.3s ease;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-accent));
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+    .logo-text span { color: var(--green-accent); }
+
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 6px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      transition: all var(--transition);
+    }
+    .theme-toggle:hover { border-color: var(--green-accent); color: var(--text-primary); }
+
+    /* =========================================
+       CARD
+    ========================================= */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 20px;
+    }
+
+    /* =========================================
+       FORM INPUTS
+    ========================================= */
+    .field-group { margin-bottom: 20px; }
+
+    .field-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-label);
+      margin-bottom: 8px;
+    }
+    .field-label .tooltip-trigger {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--bg-hover);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+      transition: all var(--transition);
+    }
+    .field-label .tooltip-trigger:hover { background: var(--green-mid); color: #fff; border-color: var(--green-mid); }
+
+    .tooltip-trigger .tooltip-box {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a2e1e;
+      color: #e8f5e9;
+      font-size: 12px;
+      font-weight: 400;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      width: 220px;
+      line-height: 1.5;
+      z-index: 300;
+      text-align: left;
+      box-shadow: var(--shadow-md);
+      pointer-events: none;
+    }
+    .tooltip-trigger .tooltip-box::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #1a2e1e;
+    }
+    .tooltip-trigger:hover .tooltip-box { display: block; }
+
+    .input-wrapper { position: relative; display: flex; align-items: center; }
+    .input-prefix {
+      position: absolute;
+      left: 14px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    input[type="number"], select {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 13px 16px 13px 36px;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color var(--transition), background-color 0.3s ease;
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    select {
+      padding-left: 16px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8f72' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+    input[type="number"]:focus, select:focus { border-color: var(--border-focus); background: var(--bg-hover); }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: var(--bg-input);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .toggle-info { display: flex; flex-direction: column; gap: 2px; }
+    .toggle-info .toggle-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-label);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toggle-info .toggle-sub { font-size: 12px; color: var(--text-muted); }
+
+    .switch { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: var(--bg-hover);
+      border-radius: 50px;
+      transition: background-color 0.2s ease;
+      border: 1.5px solid var(--border-color);
+    }
+    .slider::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--text-muted);
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+    .switch input:checked + .slider { background: var(--green-mid); border-color: var(--green-mid); }
+    .switch input:checked + .slider::before { transform: translateX(20px) translateY(-50%); background: #fff; }
+
+    .sub-field {
+      display: none;
+      margin-top: 10px;
+      padding: 16px;
+      background: var(--bg-input);
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-color);
+    }
+    .sub-field.visible { display: block; }
+    .sub-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .sub-field-label { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+    .sub-field input { width: 100%; padding-left: 32px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* =========================================
+       BUTTONS
+    ========================================= */
+    .btn-primary {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all var(--transition);
+      letter-spacing: 0.2px;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--green-light), var(--green-accent));
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(82,183,136,0.3);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-row { display: flex; gap: 10px; margin-top: 20px; }
+    .btn-secondary {
+      flex: 1;
+      padding: 13px 20px;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-secondary:hover { border-color: var(--green-accent); color: var(--green-accent); }
+
+    /* =========================================
+       RESULTS
+    ========================================= */
+    #results-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+    #results-section.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+    .result-hero {
+      text-align: center;
+      padding: 32px 20px;
+      background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+      border-radius: var(--radius-lg);
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; right: -10%;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .result-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%; left: -5%;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    .result-hero-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .result-hero-value { font-size: clamp(36px, 8vw, 52px); font-weight: 800; color: #fff; letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
+    .result-hero-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px; }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      transition: background-color 0.3s ease;
+    }
+    .stat-card.full-width { grid-column: 1 / -1; }
+    .stat-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 6px; }
+    .stat-value { font-size: 22px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px; }
+    .stat-value.negative { color: #f87171; }
+    .stat-value.positive { color: var(--green-bright); }
+    .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+    .visual-bar-title { font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 10px; }
+    .visual-bar { height: 28px; border-radius: 50px; overflow: hidden; display: flex; background: var(--bg-hover); }
+    .bar-segment { height: 100%; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .bar-liquido { background: linear-gradient(90deg, var(--green-mid), var(--green-accent)); }
+    .bar-irs { background: #f87171; }
+    .bar-ss { background: #fbbf24; }
+    .bar-legend { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
+    .bar-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    .breakdown-table { width: 100%; border-collapse: collapse; }
+    .breakdown-table tr { border-bottom: 1px solid var(--border-color); }
+    .breakdown-table tr:last-child { border-bottom: none; }
+    .breakdown-table td { padding: 12px 4px; font-size: 14px; }
+    .breakdown-table td:first-child { color: var(--text-secondary); }
+    .breakdown-table td:last-child { text-align: right; font-weight: 600; color: var(--text-primary); }
+    .breakdown-table tr.total-row td {
+      font-size: 15px;
+      font-weight: 700;
+      padding-top: 16px;
+      padding-bottom: 4px;
+      color: var(--green-accent) !important;
+      border-top: 2px solid var(--border-color);
+      border-bottom: none;
+    }
+    .breakdown-table td.deduction { color: #f87171 !important; }
+
+    .warning-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 16px;
+      background: rgba(251,191,36,0.08);
+      border: 1px solid rgba(251,191,36,0.2);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+    .warning-banner .icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    /* =========================================
+       TOAST
+    ========================================= */
+    .toast {
+      position: fixed;
+      bottom: 72px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--green-mid);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      z-index: 999;
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    @media (min-width: 769px) {
+      .toast { bottom: 24px; }
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      text-align: center;
+      padding: 32px 16px 24px;
+      color: var(--text-muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border-color);
+      margin-top: 20px;
+    }
+    footer a { color: var(--green-accent); text-decoration: none; }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 520px) {
+      .card { padding: 20px 16px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-card.full-width { grid-column: auto; }
+      .sub-field-row { grid-template-columns: 1fr; }
+      header { padding: 12px 0; margin-bottom: 0; }
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+
+  <!-- =====================================================
+       AD 1 — STICKY TOP BANNER (728×90 / 320×50 mobile)
+       Máxima visibilidade: aparece no topo da página,
+       persiste durante o scroll.
+  ====================================================== -->
+  <div id="ad-sticky-top">
+    <!-- Google AdSense: substituir pelo teu código -->
+    <p class="ad-label">Publicidade</p>
+    <div class="ad-placeholder">728×90 — Sticky Top Banner</div>
+    <!-- /Google AdSense -->
+  </div>
+
+  <!-- =====================================================
+       DESKTOP RAIL LEFT — Skyscraper 160×600
+       Visível apenas em ecrãs ≥ 1100 px.
+  ====================================================== -->
+  <div class="rail rail-left">
+    <!-- Google AdSense: substituir pelo teu código -->
+    <p class="ad-label">Pub</p>
+    <div class="ad-placeholder" style="width:160px;height:600px;">160×600</div>
+    <!-- /Google AdSense -->
+  </div>
+
+  <!-- =====================================================
+       DESKTOP RAIL RIGHT — Skyscraper 160×600
+  ====================================================== -->
+  <div class="rail rail-right">
+    <!-- Google AdSense: substituir pelo teu código -->
+    <p class="ad-label">Pub</p>
+    <div class="ad-placeholder" style="width:160px;height:600px;">160×600</div>
+    <!-- /Google AdSense -->
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="#" class="logo" aria-label="SalárioNet">
+        <div class="logo-icon">S</div>
+        <span class="logo-text">Salário<span>Net</span></span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <span class="icon" id="themeIcon">☀️</span>
+        <span id="themeLabel">Claro</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- =====================================================
+           AD 2 — BELOW HEADER LEADERBOARD (728×90)
+           Primeira posição visível sem scroll — alta taxa de CTR.
+      ====================================================== -->
+      <div class="ad-strip">
+        <!-- Google AdSense: substituir pelo teu código -->
+        <p class="ad-label">Publicidade</p>
+        <div class="ad-placeholder">728×90 — Abaixo do Cabeçalho</div>
+        <!-- /Google AdSense -->
+      </div>
+
+      <!-- ════════════════ FORM CARD ════════════════ -->
+      <div class="card">
+        <p class="card-title">Dados do Salário</p>
+
+        <!-- Salário bruto -->
+        <div class="field-group">
+          <label class="field-label" for="brutoPay">
+            Salário bruto mensal
+            <span class="tooltip-trigger" tabindex="0">?
+              <span class="tooltip-box">O valor que está no teu contrato antes de qualquer desconto. Não inclui subsídio de alimentação.</span>
+            </span>
+          </label>
+          <div class="input-wrapper">
+            <span class="input-prefix">€</span>
+            <input type="number" id="brutoPay" placeholder="1 500" min="0" step="1" inputmode="decimal">
+          </div>
+        </div>
+
+        <!-- Tipo + Situação familiar -->
+        <div class="grid-2">
+          <div class="field-group">
+            <label class="field-label" for="tipoContrato">
+              Tipo de contrato
+              <span class="tooltip-trigger" tabindex="0">?
+                <span class="tooltip-box">Trabalhador por conta de outrem (empresa desconta IRS e SS). Recibo verde (trabalhador independente).</span>
+              </span>
+            </label>
+            <select id="tipoContrato">
+              <option value="coe">Conta de Outrem</option>
+              <option value="rv">Recibo Verde</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="situacaoFamiliar">
+              Situação familiar
+              <span class="tooltip-trigger" tabindex="0">?
+                <span class="tooltip-box">Afeta a tabela de retenção IRS. Casado 2 titulares: ambos têm rendimento.</span>
+              </span>
+            </label>
+            <select id="situacaoFamiliar">
+              <option value="solteiro">Solteiro/a</option>
+              <option value="casado1">Casado/a — 1 titular</option>
+              <option value="casado2">Casado/a — 2 titulares</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dependentes -->
+        <div class="field-group">
+          <label class="field-label" for="dependentes">
+            Número de dependentes
+            <span class="tooltip-trigger" tabindex="0">?
+              <span class="tooltip-box">Cada dependente reduz a retenção de IRS em €21,40/mês.</span>
+            </span>
+          </label>
+          <div class="input-wrapper">
+            <select id="dependentes" style="padding-left:16px">
+              <option value="0">0 dependentes</option>
+              <option value="1">1 dependente</option>
+              <option value="2">2 dependentes</option>
+              <option value="3">3 dependentes</option>
+              <option value="4">4 dependentes</option>
+              <option value="5">5 dependentes</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             AD 3 — MID-FORM IN-CONTENT (320×50 / responsive)
+             Posicionado dentro do formulário, entre campos —
+             utilizador está envolvido, impressão garantida.
+        ====================================================== -->
+        <div style="margin: 4px 0 20px;">
+          <!-- Google AdSense: substituir pelo teu código -->
+          <p class="ad-label">Publicidade</p>
+          <div class="ad-placeholder" style="width:100%;height:50px;border-radius:var(--radius-sm);">
+            Anúncio responsivo — Mid-Form
+          </div>
+          <!-- /Google AdSense -->
+        </div>
+
+        <!-- Toggles -->
+        <div class="field-group">
+          <div class="field-label">
+            Opções adicionais
+            <span class="tooltip-trigger" tabindex="0">?
+              <span class="tooltip-box">Subsídio alimentação isento até €6/dia. Duodécimos divide sub. férias e Natal pelos 12 meses.</span>
+            </span>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <div class="toggle-label">Subsídio de alimentação</div>
+              <div class="toggle-sub">Por defeito: €6,00/dia × 22 dias</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleAlimentacao">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="sub-field" id="alimentacaoFields">
+            <div class="sub-field-row">
+              <div>
+                <p class="sub-field-label">Valor por dia (€)</p>
+                <div class="input-wrapper">
+                  <span class="input-prefix">€</span>
+                  <input type="number" id="alimentacaoDia" value="6.00" step="0.01" min="0">
+                </div>
+              </div>
+              <div>
+                <p class="sub-field-label">Dias úteis/mês</p>
+                <div class="input-wrapper">
+                  <span class="input-prefix" style="left:10px;font-size:13px">dias</span>
+                  <input type="number" id="alimentacaoDias" value="22" step="1" min="0" style="padding-left:46px">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="toggle-row" style="margin-top:10px;">
+            <div class="toggle-info">
+              <div class="toggle-label">
+                Duodécimos
+                <span class="tooltip-trigger" tabindex="0">?
+                  <span class="tooltip-box">Subsídio de férias e de Natal dividido por 12 e pago mensalmente.</span>
+                </span>
+              </div>
+              <div class="toggle-sub">Distribuir férias e Natal pelos 12 meses</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleDuodecimos">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="calcular()">Calcular Salário Líquido</button>
+        <div class="btn-row">
+          <button class="btn-secondary" onclick="partilhar()">Partilhar resultado</button>
+          <button class="btn-secondary" onclick="limpar()">Limpar</button>
+        </div>
+      </div>
+      <!-- /form card -->
+
+      <!-- =====================================================
+           AD 4 — BETWEEN FORM & RESULTS LEADERBOARD (728×90)
+           Zona quente: utilizador acabou de interagir e está
+           à espera dos resultados — altíssimo viewability.
+      ====================================================== -->
+      <div class="ad-leader">
+        <!-- Google AdSense: substituir pelo teu código -->
+        <p class="ad-label">Publicidade</p>
+        <div class="ad-placeholder">728×90 — Entre Formulário e Resultados</div>
+        <!-- /Google AdSense -->
+      </div>
+
+      <!-- ════════════════ RESULTS ════════════════ -->
+      <div id="results-section">
+
+        <!-- Hero result -->
+        <div class="result-hero">
+          <p class="result-hero-label">Salário líquido mensal</p>
+          <p class="result-hero-value" id="heroLiquido">—</p>
+          <p class="result-hero-sub" id="heroSub">—</p>
+        </div>
+
+        <!-- =====================================================
+             AD 5 — AFTER HERO RECTANGLE (336×280)
+             Posição prime: imediatamente após o valor principal,
+             o utilizador olha para baixo — máxima visibilidade.
+        ====================================================== -->
+        <div class="ad-rect">
+          <!-- Google AdSense: substituir pelo teu código -->
+          <p class="ad-label">Publicidade</p>
+          <div class="ad-placeholder" style="width:min(336px,100%);height:280px;">336×280 — Após Resultado Principal</div>
+          <!-- /Google AdSense -->
+        </div>
+
+        <!-- Stats grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-label">Desconto SS</p>
+            <p class="stat-value negative" id="statSS">—</p>
+            <p class="stat-sub" id="statSSPct">—</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Retenção IRS</p>
+            <p class="stat-value negative" id="statIRS">—</p>
+            <p class="stat-sub" id="statIRSPct">—</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Custo para a empresa</p>
+            <p class="stat-value" id="statCustoEmpresa">—</p>
+            <p class="stat-sub">Bruto + SS patronal (23,75%)</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Salário líquido anual</p>
+            <p class="stat-value positive" id="statAnual">—</p>
+            <p class="stat-sub" id="statAnualSub">—</p>
+          </div>
+          <div class="stat-card full-width" id="statAlimCard" style="display:none">
+            <p class="stat-label">Subsídio de alimentação (mensal)</p>
+            <p class="stat-value positive" id="statAlim">—</p>
+            <p class="stat-sub">Valor líquido (isento até limite legal)</p>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             AD 6 — BETWEEN STATS & VISUAL BAR (728×90)
+             Separador natural entre secções — scroll pause point.
+        ====================================================== -->
+        <div class="ad-leader">
+          <!-- Google AdSense: substituir pelo teu código -->
+          <p class="ad-label">Publicidade</p>
+          <div class="ad-placeholder">728×90 — Entre Estatísticas e Gráfico</div>
+          <!-- /Google AdSense -->
+        </div>
+
+        <!-- Visual bar -->
+        <div class="card" style="padding:20px 24px;">
+          <p class="visual-bar-title">Distribuição do salário bruto</p>
+          <div class="visual-bar">
+            <div class="bar-segment bar-liquido" id="barLiquido" style="width:0%"></div>
+            <div class="bar-segment bar-irs" id="barIRS" style="width:0%"></div>
+            <div class="bar-segment bar-ss" id="barSS" style="width:0%"></div>
+          </div>
+          <div class="bar-legend">
+            <div class="bar-legend-item">
+              <div class="legend-dot" style="background:var(--green-accent)"></div>
+              <span id="legendLiquido">Líquido —</span>
+            </div>
+            <div class="bar-legend-item">
+              <div class="legend-dot" style="background:#f87171"></div>
+              <span id="legendIRS">IRS —</span>
+            </div>
+            <div class="bar-legend-item">
+              <div class="legend-dot" style="background:#fbbf24"></div>
+              <span id="legendSS">SS —</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             AD 7 — BEFORE BREAKDOWN RECTANGLE (300×250)
+             Antes da tabela de detalhes — utilizador quer
+             continuar a ler, permanece na página.
+        ====================================================== -->
+        <div class="ad-rect">
+          <!-- Google AdSense: substituir pelo teu código -->
+          <p class="ad-label">Publicidade</p>
+          <div class="ad-placeholder" style="width:min(300px,100%);height:250px;">300×250 — Antes da Tabela de Detalhes</div>
+          <!-- /Google AdSense -->
+        </div>
+
+        <!-- Breakdown table -->
+        <div class="card">
+          <p class="card-title">Detalhes do Cálculo</p>
+          <table class="breakdown-table">
+            <tbody id="breakdownBody"></tbody>
+          </table>
+          <div class="warning-banner">
+            <span class="icon">⚠️</span>
+            <span>Valores estimativos com base nas tabelas de retenção IRS 2025. Consulte um contabilista para situações específicas.</span>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             AD 8 — AFTER BREAKDOWN RECTANGLE (300×250)
+             Fim do conteúdo — utilizador viu tudo, boa
+             disposição para clicar num anúncio relevante.
+        ====================================================== -->
+        <div class="ad-rect">
+          <!-- Google AdSense: substituir pelo teu código -->
+          <p class="ad-label">Publicidade</p>
+          <div class="ad-placeholder" style="width:min(300px,100%);height:250px;">300×250 — Após Detalhes do Cálculo</div>
+          <!-- /Google AdSense -->
+        </div>
+
+      </div>
+      <!-- /results-section -->
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- =====================================================
+       AD 9 — PRE-FOOTER LEADERBOARD (728×90)
+       Última impressão antes do utilizador sair.
+  ====================================================== -->
+  <div style="text-align:center;margin:20px 0 0;padding:0 16px;">
+    <!-- Google AdSense: substituir pelo teu código -->
+    <p class="ad-label">Publicidade</p>
+    <div class="ad-placeholder" style="width:min(728px,100%);height:90px;margin:0 auto;">728×90 — Pré-Rodapé</div>
+    <!-- /Google AdSense -->
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>Valores estimados com base nas tabelas IRS 2025 — Autoridade Tributária e Aduaneira</p>
+      <p style="margin-top:6px;">© 2025 SalárioNet · Para uso informativo</p>
+    </div>
+  </footer>
+
+  <!-- =====================================================
+       AD 10 — STICKY BOTTOM BANNER (320×50, mobile only)
+       Sempre visível no telemóvel. Botão X para fechar.
+  ====================================================== -->
+  <div id="ad-sticky-bottom">
+    <button class="close-btn" onclick="document.getElementById('ad-sticky-bottom').style.display='none'" aria-label="Fechar anúncio">×</button>
+    <!-- Google AdSense: substituir pelo teu código -->
+    <div class="ad-placeholder" style="width:min(320px,100%);height:50px;margin:0 auto;">320×50 — Sticky Bottom Mobile</div>
+    <!-- /Google AdSense -->
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+  <script>
+    'use strict';
+
+    // ── THEME ──────────────────────────────────────────
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon   = document.getElementById('themeIcon');
+    const themeLabel  = document.getElementById('themeLabel');
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeIcon.textContent  = isDark ? '🌙' : '☀️';
+      themeLabel.textContent = isDark ? 'Escuro' : 'Claro';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    if (savedTheme === 'light') {
+      themeIcon.textContent  = '🌙';
+      themeLabel.textContent = 'Escuro';
+    }
+
+    // ── TOGGLE SWITCH ──────────────────────────────────
+    const toggleAlimentacao  = document.getElementById('toggleAlimentacao');
+    const alimentacaoFields  = document.getElementById('alimentacaoFields');
+    toggleAlimentacao.addEventListener('change', () => {
+      alimentacaoFields.classList.toggle('visible', toggleAlimentacao.checked);
+    });
+
+    // ── URL PARAMS → AUTO-FILL ─────────────────────────
+    function fillFromUrl() {
+      const p = new URLSearchParams(window.location.search);
+      if (p.has('bruto'))    document.getElementById('brutoPay').value        = p.get('bruto');
+      if (p.has('tipo'))     document.getElementById('tipoContrato').value    = p.get('tipo');
+      if (p.has('sit'))      document.getElementById('situacaoFamiliar').value = p.get('sit');
+      if (p.has('dep'))      document.getElementById('dependentes').value     = p.get('dep');
+      if (p.has('alim')) {
+        const on = p.get('alim') === '1';
+        toggleAlimentacao.checked = on;
+        alimentacaoFields.classList.toggle('visible', on);
+      }
+      if (p.has('alimDia'))  document.getElementById('alimentacaoDia').value  = p.get('alimDia');
+      if (p.has('alimDias')) document.getElementById('alimentacaoDias').value = p.get('alimDias');
+      if (p.has('duo'))      document.getElementById('toggleDuodecimos').checked = p.get('duo') === '1';
+      if (p.has('bruto'))    setTimeout(calcular, 200);
+    }
+
+    // ── IRS TABLE 2025 ─────────────────────────────────
+    // [limite, taxa, parcela_abater]
+    const ESCALOES = [
+      [792,      0,      0],
+      [1007,     0.13,   0],
+      [1739,     0.185,  55.39],
+      [2155,     0.28,   233.52],
+      [3471,     0.35,   384.37],
+      [5765,     0.37,   453.80],
+      [7716,     0.395,  598.17],
+      [Infinity, 0.40,   636.75],
+    ];
+
+    function calcularIRS(bruto, situacao, dependentes) {
+      let base = situacao === 'casado1' ? bruto / 2 : bruto;
+      let irs = 0;
+      for (const [lim, taxa, parcela] of ESCALOES) {
+        if (base <= lim) { irs = base * taxa - parcela; break; }
+      }
+      if (situacao === 'casado1') irs *= 2;
+      return Math.max(0, irs - dependentes * 21.40);
+    }
+
+    // ── MAIN CALC ──────────────────────────────────────
+    function calcular() {
+      const bruto = parseFloat(document.getElementById('brutoPay').value);
+      if (!bruto || bruto <= 0) {
+        showToast('Insere um salário bruto válido');
+        document.getElementById('brutoPay').focus();
+        return;
+      }
+
+      const tipo         = document.getElementById('tipoContrato').value;
+      const situacao     = document.getElementById('situacaoFamiliar').value;
+      const dependentes  = parseInt(document.getElementById('dependentes').value);
+      const comAlim      = document.getElementById('toggleAlimentacao').checked;
+      const alimDia      = parseFloat(document.getElementById('alimentacaoDia').value)  || 6.00;
+      const alimDias     = parseInt(document.getElementById('alimentacaoDias').value)   || 22;
+      const duodecimos   = document.getElementById('toggleDuodecimos').checked;
+
+      let ss, irs, ssPatronal, descSS, descIRS;
+
+      if (tipo === 'coe') {
+        ss         = bruto * 0.11;
+        irs        = calcularIRS(bruto, situacao, dependentes);
+        ssPatronal = bruto * 0.2375;
+        descSS     = '11%';
+        descIRS    = 'Tabela AT 2025';
+      } else {
+        ss         = bruto * 0.214;
+        irs        = bruto * 0.25;
+        ssPatronal = 0;
+        descSS     = '21,4% (coef. 0,70)';
+        descIRS    = '25% (taxa geral lib.)';
+      }
+
+      let liquido = bruto - ss - irs;
+
+      // Duodécimos
+      if (duodecimos && tipo === 'coe') {
+        const extra = (bruto / 12) * 2;
+        liquido += extra - extra * 0.11 - calcularIRS(extra, situacao, 0);
+      }
+
+      const alimMensal   = comAlim ? alimDia * alimDias : 0;
+      const totalLiquido = liquido + alimMensal;
+      const custoEmpresa = bruto + ssPatronal;
+      const pctDescontos = ((ss + irs) / bruto) * 100;
+
+      let liquidoAnual = tipo === 'rv'
+        ? liquido * 12
+        : duodecimos ? liquido * 12 : liquido * 14;
+      if (comAlim) liquidoAnual += alimMensal * 11;
+
+      // ── RENDER ───────────────────────────────────────
+      const fmt    = v => v.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const fmtPct = v => v.toFixed(1) + '%';
+
+      document.getElementById('heroLiquido').textContent = '€' + fmt(totalLiquido);
+      document.getElementById('heroSub').textContent =
+        `${fmtPct(pctDescontos)} de descontos · ${tipo === 'coe' && !duodecimos ? '14' : '12'} meses`;
+
+      document.getElementById('statSS').textContent          = '-€' + fmt(ss);
+      document.getElementById('statSSPct').textContent       = descSS + ' do bruto';
+      document.getElementById('statIRS').textContent         = '-€' + fmt(irs);
+      document.getElementById('statIRSPct').textContent      = descIRS;
+      document.getElementById('statCustoEmpresa').textContent = '€' + fmt(custoEmpresa);
+      document.getElementById('statAnual').textContent       = '€' + fmt(liquidoAnual);
+      document.getElementById('statAnualSub').textContent    = tipo === 'rv'
+        ? '12 meses (sem subsídios)' : duodecimos ? '12 meses (com duodécimos)' : '14 meses (férias + Natal)';
+
+      const alimCard = document.getElementById('statAlimCard');
+      if (comAlim) {
+        alimCard.style.display = '';
+        document.getElementById('statAlim').textContent = '€' + fmt(alimMensal);
+      } else {
+        alimCard.style.display = 'none';
+      }
+
+      const pctLiq = (liquido / bruto) * 100;
+      const pctIRS = (irs    / bruto) * 100;
+      const pctSS  = (ss     / bruto) * 100;
+      document.getElementById('barLiquido').style.width = pctLiq + '%';
+      document.getElementById('barIRS').style.width     = pctIRS + '%';
+      document.getElementById('barSS').style.width      = pctSS  + '%';
+      document.getElementById('legendLiquido').textContent = 'Líquido ' + fmtPct(pctLiq);
+      document.getElementById('legendIRS').textContent     = 'IRS '     + fmtPct(pctIRS);
+      document.getElementById('legendSS').textContent      = 'SS '      + fmtPct(pctSS);
+
+      // Breakdown
+      const rows = [
+        ['Salário bruto', '€' + fmt(bruto)],
+        ['Segurança Social (' + descSS + ')', '-€' + fmt(ss), 'deduction'],
+        ['Retenção IRS (' + descIRS + ')',    '-€' + fmt(irs), 'deduction'],
+      ];
+      if (dependentes > 0 && tipo === 'coe')
+        rows.push(['  Redução por dependentes (' + dependentes + '×€21,40)', '-€' + fmt(dependentes * 21.40)]);
+      if (duodecimos && tipo === 'coe') {
+        const extra = (bruto / 12) * 2;
+        rows.push(['Duodécimos (÷12 × 2 meses)', '+€' + fmt(extra - extra * 0.11)]);
+      }
+      if (comAlim)
+        rows.push(['Subsídio de alimentação', '+€' + fmt(alimMensal)]);
+
+      const tbody = document.getElementById('breakdownBody');
+      tbody.innerHTML = '';
+      rows.forEach(([label, val, cls]) => {
+        const tr = tbody.insertRow();
+        const td1 = tr.insertCell(); td1.textContent = label;
+        const td2 = tr.insertCell(); td2.textContent = val;
+        if (cls) td2.classList.add(cls);
+      });
+
+      const trT = tbody.insertRow(); trT.classList.add('total-row');
+      trT.insertCell().textContent = 'Salário líquido mensal';
+      trT.insertCell().textContent = '€' + fmt(totalLiquido);
+
+      if (tipo === 'coe') {
+        const trE = tbody.insertRow(); trE.classList.add('total-row');
+        const c1 = trE.insertCell(); c1.textContent = 'Custo total empresa';
+        const c2 = trE.insertCell(); c2.textContent = '€' + fmt(custoEmpresa);
+        c1.style.color = 'var(--text-secondary)';
+        c2.style.color = 'var(--text-secondary)';
+      }
+
+      const sec = document.getElementById('results-section');
+      sec.classList.add('visible');
+      setTimeout(() => sec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+
+    // ── SHARE ──────────────────────────────────────────
+    function partilhar() {
+      const bruto = document.getElementById('brutoPay').value;
+      if (!bruto) { showToast('Calcula primeiro o salário'); return; }
+      const p = new URLSearchParams({
+        bruto,
+        tipo:     document.getElementById('tipoContrato').value,
+        sit:      document.getElementById('situacaoFamiliar').value,
+        dep:      document.getElementById('dependentes').value,
+        alim:     toggleAlimentacao.checked ? '1' : '0',
+        alimDia:  document.getElementById('alimentacaoDia').value,
+        alimDias: document.getElementById('alimentacaoDias').value,
+        duo:      document.getElementById('toggleDuodecimos').checked ? '1' : '0',
+      });
+      const url = location.origin + location.pathname + '?' + p.toString();
+      navigator.clipboard.writeText(url)
+        .then(() => showToast('Link copiado!'))
+        .catch(() => {
+          const ta = Object.assign(document.createElement('textarea'), { value: url, style: 'position:fixed;opacity:0' });
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta); showToast('Link copiado!');
+        });
+    }
+
+    // ── CLEAR ──────────────────────────────────────────
+    function limpar() {
+      ['brutoPay'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('tipoContrato').value      = 'coe';
+      document.getElementById('situacaoFamiliar').value  = 'solteiro';
+      document.getElementById('dependentes').value       = '0';
+      toggleAlimentacao.checked = false;
+      alimentacaoFields.classList.remove('visible');
+      document.getElementById('alimentacaoDia').value    = '6.00';
+      document.getElementById('alimentacaoDias').value   = '22';
+      document.getElementById('toggleDuodecimos').checked = false;
+      document.getElementById('results-section').classList.remove('visible');
+      history.replaceState(null, '', location.pathname);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── TOAST ──────────────────────────────────────────
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    // ── ENTER KEY ──────────────────────────────────────
+    document.getElementById('brutoPay').addEventListener('keydown', e => {
+      if (e.key === 'Enter') calcular();
+    });
+
+    // ── INIT ───────────────────────────────────────────
+    fillFromUrl();
+  </script>
+
+</body>
+</html>
