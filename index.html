@@ -185,9 +185,13 @@
     }
     #action-bar .ab-icon:hover { border-color: var(--green-accent); color: var(--green-accent); }
     #action-bar .ab-icon.disabled { opacity: 0.3; pointer-events: none; }
-    /* impede AdSense Auto Ads de injetar dentro da action bar */
-    #action-bar ins, #action-bar iframe, #action-bar > *:not(button) { display: none !important; }
-    .ab-calc > span { pointer-events: none; }
+    /* impede qualquer elemento injetado dentro da action bar */
+    #action-bar ins,
+    #action-bar iframe,
+    #action-bar > *:not(button),
+    .ab-calc > *:not(span),
+    .ab-calc span ~ * { display: none !important; }
+    .ab-calc > span { pointer-events: none; position: relative; z-index: 1; }
 
     /* ── PRINT / PDF ── */
     @media print {
