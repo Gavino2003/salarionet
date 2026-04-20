@@ -189,23 +189,74 @@
 
     /* ── PRINT / PDF ── */
     @media print {
-      #ad-sticky-top, .rail, .ad-strip, .ad-rect, .ad-leader,
-      #action-bar, header .theme-toggle, .jovem-box,
-      .btn-primary, .btn-row, .tip { display: none !important; }
-      body { background: #fff !important; color: #111 !important; padding: 0 !important; }
-      .card { border: 1px solid #ddd !important; background: #fff !important; break-inside: avoid; }
-      .result-hero { background: #1a472a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      #results-section { opacity: 1 !important; transform: none !important; pointer-events: all !important; }
-      .stat-pill { border: 1px solid #ddd !important; background: #fff !important; }
-      .bar-liq { background: #2d6a4f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .bar-irs { background: #f87171 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .bar-ss  { background: #fbbf24 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .visual-bar { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .hero-badge { background: rgba(0,0,0,0.08) !important; color: #333 !important; }
-      footer { display: block !important; }
-      .print-header { display: block !important; }
+      @page { margin: 12mm 14mm; size: A4; }
+
+      /* Ocultar tudo exceto resultados */
+      #ad-sticky-top, .rail, .ad-wrap,
+      #action-bar, header, .hero-intro,
+      .jovem-box, .tip,
+      /* ocultar cards do formulário */
+      main > .container > .card,
+      #cardRV { display: none !important; }
+
+      body {
+        background: #fff !important; color: #111 !important;
+        padding: 0 !important; font-size: 11pt;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      .container { max-width: 100% !important; padding: 0 !important; }
+
+      #results-section {
+        opacity: 1 !important; transform: none !important;
+        pointer-events: all !important; display: block !important;
+      }
+
+      /* Cabeçalho simples no PDF */
+      #print-header {
+        display: flex !important; align-items: center; gap: 8px;
+        margin-bottom: 14px; padding-bottom: 10px;
+        border-bottom: 2px solid #2d6a4f;
+      }
+      #print-header .ph-logo {
+        width: 28px; height: 28px; border-radius: 7px;
+        background: #2d6a4f; color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 14px; font-weight: 800;
+      }
+      #print-header .ph-title { font-size: 16pt; font-weight: 800; color: #111; }
+      #print-header .ph-title span { color: #2d6a4f; }
+      #print-header .ph-date { margin-left: auto; font-size: 9pt; color: #888; }
+
+      /* Hero */
+      .result-hero {
+        background: #1a472a !important;
+        border-radius: 12px !important; padding: 20px !important;
+        margin-bottom: 12px !important; break-inside: avoid;
+      }
+      .result-hero-value { font-size: 36pt !important; }
+
+      /* Stats grid compacto */
+      .stats-row { gap: 6px !important; margin-bottom: 10px !important; }
+      .stat-pill {
+        border: 1px solid #ddd !important; background: #fff !important;
+        padding: 10px 12px !important; break-inside: avoid;
+      }
+      .stat-pill.accent { background: #f0faf5 !important; border-color: #2d6a4f !important; }
+      .sp-value { font-size: 14pt !important; }
+
+      /* Barra visual */
+      .card { border: 1px solid #e5e5e5 !important; background: #fff !important; break-inside: avoid; margin-bottom: 8px !important; }
+      .visual-bar { background: #eee !important; }
+      .bar-liq { background: #2d6a4f !important; }
+      .bar-irs { background: #f87171 !important; }
+      .bar-ss  { background: #fbbf24 !important; }
+
+      /* Tabela */
+      .breakdown-table td { padding: 8px 2px !important; font-size: 10pt !important; }
+
+      footer { display: block !important; border-top: 1px solid #eee !important; padding: 10px 0 0 !important; font-size: 8pt !important; color: #aaa !important; }
     }
-    .print-header { display: none; }
+    #print-header { display: none; }
 
     /* ── HEADER ── */
     header {
@@ -872,6 +923,13 @@
       </div>
 
       <!-- ═══ RESULTADOS ═══ -->
+      <!-- Cabeçalho visível apenas no PDF -->
+      <div id="print-header">
+        <div class="ph-logo">S</div>
+        <div class="ph-title">Salário<span>Net</span></div>
+        <div class="ph-date" id="printDate"></div>
+      </div>
+
       <div id="results-section">
 
         <!-- IRS Jovem callout -->
@@ -1372,6 +1430,8 @@
       if (!document.getElementById('results-section').classList.contains('visible')) return;
       const titulo = document.title;
       document.title = 'SalárioNet — ' + document.getElementById('heroLiquido').textContent + ' líquido';
+      document.getElementById('printDate').textContent =
+        new Date().toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' });
       window.print();
       document.title = titulo;
     }
