@@ -9,10 +9,15 @@
   <meta name="author" content="SalárioNet">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <meta name="theme-color" content="#0f1512">
+  <meta name="geo.region" content="PT">
+  <meta name="geo.placename" content="Portugal">
+  <meta name="language" content="pt-PT">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <link rel="canonical" href="https://salarionet.vercel.app/">
+  <link rel="alternate" hreflang="pt-PT" href="https://salarionet.vercel.app/">
+  <link rel="alternate" hreflang="x-default" href="https://salarionet.vercel.app/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Calculadora Salário Líquido 2026 Portugal | SalárioNet">
@@ -55,6 +60,17 @@
     }
   }
   </script>
+  <!-- Schema BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "SalárioNet", "item": "https://salarionet.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculadora Salário Líquido 2026", "item": "https://salarionet.vercel.app/" }
+    ]
+  }
+  </script>
   <!-- Schema FAQ para snippets Google -->
   <script type="application/ld+json">
   {
@@ -85,12 +101,17 @@
   }
   </script>
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6445553878327741" crossorigin="anonymous"></script>
-  <!-- Google Fonts — apenas weights usados -->
+  <!-- Preload LCP font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <!-- DNS prefetch AdSense -->
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6445553878327741" crossorigin="anonymous"></script>
 
   <style>
     :root {
@@ -146,6 +167,15 @@
       --border:        #d4e6d9;
       --border-focus:  #2d6a4f;
     }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 8px;
+      background: var(--green-mid); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 14px; font-weight: 600; z-index: 9999;
+      text-decoration: none; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -693,6 +723,8 @@
 
 <body data-theme="dark">
 
+  <a href="#main-content" class="skip-link">Saltar para conteúdo principal</a>
+
   <!-- AD 1 — STICKY TOP -->
   <div id="ad-sticky-top">
     <ins class="adsbygoogle" style="display:block"
@@ -717,7 +749,7 @@
 
   <header>
     <div class="container">
-      <a href="#" class="logo" aria-label="SalárioNet">
+      <a href="https://salarionet.vercel.app/" class="logo" aria-label="SalárioNet — página principal">
         <div class="logo-icon">S</div>
         <span class="logo-text">Salário<span>Net</span></span>
       </a>
@@ -728,7 +760,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <div class="container">
 
       <div class="hero-intro">
@@ -772,7 +804,7 @@
                 <span class="tip-box">Conta de outrem: empresa desconta IRS e SS. Recibo verde: trabalhador independente paga SS trimestral.</span>
               </span>
             </label>
-            <select id="tipoContrato" onchange="onTipoChange()">
+            <select id="tipoContrato" onchange="onTipoChange()" autocomplete="off">
               <option value="coe">Conta de Outrem</option>
               <option value="rv">Recibo Verde</option>
             </select>
@@ -784,7 +816,7 @@
                 <span class="tip-box">Afeta a tabela de retenção IRS. Casado 1 titular: só um trabalha. Casado 2 titulares: ambos têm rendimento.</span>
               </span>
             </label>
-            <select id="situacaoFamiliar">
+            <select id="situacaoFamiliar" autocomplete="off">
               <option value="solteiro">Solteiro/a</option>
               <option value="casado1">Casado — 1 titular</option>
               <option value="casado2">Casado — 2 titulares</option>
@@ -818,7 +850,7 @@
         </div>
 
         <!-- IRS Jovem -->
-        <div class="toggle-row" onclick="toggleCheck('toggleIrsJovem')" id="rowIrsJovem">
+        <div class="toggle-row" onclick="toggleCheck('toggleIrsJovem')" id="rowIrsJovem" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCheck('toggleIrsJovem')}">
           <div class="toggle-info">
             <div class="toggle-label">
               IRS Jovem 2026
@@ -851,7 +883,7 @@
         </div>
 
         <!-- Deficiência -->
-        <div class="toggle-row" onclick="toggleCheck('toggleDeficiencia')">
+        <div class="toggle-row" onclick="toggleCheck('toggleDeficiencia')" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCheck('toggleDeficiencia')}">
           <div class="toggle-info">
             <div class="toggle-label">
               Deficiência (≥60%)
@@ -876,7 +908,7 @@
         </div>
 
         <!-- Subsídio alimentação -->
-        <div class="toggle-row" onclick="toggleCheck('toggleAlimentacao')" id="rowAlim">
+        <div class="toggle-row" onclick="toggleCheck('toggleAlimentacao')" id="rowAlim" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCheck('toggleAlimentacao')}">
           <div class="toggle-info">
             <div class="toggle-label">
               Subsídio de alimentação
@@ -918,7 +950,7 @@
         </div>
 
         <!-- Duodécimos -->
-        <div class="toggle-row" id="rowDuodecimos" onclick="toggleCheck('toggleDuodecimos')">
+        <div class="toggle-row" id="rowDuodecimos" onclick="toggleCheck('toggleDuodecimos')" role="button" tabindex="0" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCheck('toggleDuodecimos')}">
           <div class="toggle-info">
             <div class="toggle-label">
               Duodécimos
@@ -985,7 +1017,7 @@
         <div class="ph-date" id="printDate"></div>
       </div>
 
-      <div id="results-section">
+      <div id="results-section" aria-live="polite" aria-atomic="false">
 
         <!-- IRS Jovem callout -->
         <div class="jovem-box" id="jovemBox">
@@ -1175,6 +1207,11 @@
     }
 
     // ── UI HELPERS ─────────────────────────────────────────────
+    function setAriaExpanded(rowId, val) {
+      const row = document.getElementById(rowId);
+      if (row) row.setAttribute('aria-expanded', val ? 'true' : 'false');
+    }
+
     function toggleCheck(id) {
       const el = document.getElementById(id);
       el.checked = !el.checked;
@@ -1192,11 +1229,13 @@
     function onIrsJovemChange() {
       const on = document.getElementById('toggleIrsJovem').checked;
       document.getElementById('irsJovemFields').classList.toggle('open', on);
+      setAriaExpanded('rowIrsJovem', on);
     }
 
     function onAlimChange() {
       const on = document.getElementById('toggleAlimentacao').checked;
       document.getElementById('alimentacaoFields').classList.toggle('open', on);
+      setAriaExpanded('rowAlim', on);
     }
 
     function onTipoAlimChange() {
@@ -1498,7 +1537,7 @@
       document.getElementById('alimentacaoDia').value   = '6.15';
       document.getElementById('alimentacaoDias').value  = '22';
       document.getElementById('tipoAlim').value         = 'dinheiro';
-      document.getElementById('alimSubText').textContent = 'Dinheiro: isento até €6,00/dia';
+      document.getElementById('alimSubText').textContent = 'Dinheiro: isento até €6,15/dia';
       document.getElementById('toggleDuodecimos').checked = false;
       document.getElementById('ativRV').value           = 'listada';
       document.getElementById('cardRV').style.display   = 'none';
