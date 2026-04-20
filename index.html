@@ -183,6 +183,9 @@
     }
     #action-bar .ab-icon:hover { border-color: var(--green-accent); color: var(--green-accent); }
     #action-bar .ab-icon.disabled { opacity: 0.3; pointer-events: none; }
+    /* impede AdSense Auto Ads de injetar dentro da action bar */
+    #action-bar ins, #action-bar iframe, #action-bar > *:not(button) { display: none !important; }
+    .ab-calc > span { pointer-events: none; }
 
     /* ── PRINT / PDF ── */
     @media print {
@@ -998,9 +1001,9 @@
   </footer>
 
   <!-- BARRA DE AÇÃO FIXA -->
-  <div id="action-bar">
+  <div id="action-bar" data-nosnippet>
     <button class="ab-icon disabled" id="btnPdf" onclick="gerarPDF()" title="Guardar PDF">📄</button>
-    <button class="ab-calc" onclick="calcular()">Calcular salário líquido</button>
+    <button class="ab-calc" onclick="calcular()"><span>Calcular salário líquido</span></button>
     <button class="ab-icon disabled" id="btnPartilhar" onclick="partilhar()" title="Partilhar">🔗</button>
     <button class="ab-icon" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo">↑</button>
   </div>
