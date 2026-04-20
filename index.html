@@ -249,9 +249,9 @@
       #ad-sticky-top, .rail, .ad-wrap,
       #action-bar, header, .hero-intro,
       .jovem-box, .tip,
-      /* ocultar cards do formulário */
+      /* ocultar cards do formulário e FAQ */
       main > .container > .card,
-      #cardRV { display: none !important; }
+      #cardRV, section[aria-label="Perguntas frequentes"] { display: none !important; }
 
       body {
         background: #fff !important; color: #111 !important;
@@ -821,7 +821,7 @@
         <div class="toggle-row" onclick="toggleCheck('toggleIrsJovem')" id="rowIrsJovem">
           <div class="toggle-info">
             <div class="toggle-label">
-              IRS Jovem 2025
+              IRS Jovem 2026
               <span class="badge badge-new">Novo</span>
               <span class="tip" tabindex="0" onclick="event.stopPropagation()">?
                 <span class="tip-box">Para quem tem menos de 35 anos. Ano 1: 100% isenção; Anos 2-4: 75%; Anos 5-7: 50%; Anos 8-10: 25%. Limite: €29.542/ano.</span>
@@ -1081,7 +1081,7 @@
             <tbody id="breakdownBody"></tbody>
           </table>
           <div class="disclaimer">
-            ⚠️ Valores estimativos com base nas tabelas de retenção IRS 2025 (AT). Consulte um contabilista para situações específicas.
+            ⚠️ Valores estimativos com base nas tabelas de retenção IRS 2026 (AT). Consulte um contabilista para situações específicas.
           </div>
         </div>
 
@@ -1291,7 +1291,7 @@
         irs        = calcularIRS(bruto, situacao, dependentes, jovemFator, deficiencia);
         ssPatronal = bruto * 0.2375;
         labelSS    = '11% SS';
-        labelIRS   = 'Tabela AT 2025';
+        labelIRS   = 'Tabela AT 2026';
       } else {
         const taxaIRS = ativRV === 'listada' ? 0.23 : 0.115;
         ss         = bruto * 0.70 * 0.214;
