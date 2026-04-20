@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora Salário Líquido 2025 Portugal | SalárioNet</title>
+  <title>Calculadora Salário Líquido 2026 Portugal | SalárioNet</title>
   <meta name="description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social para trabalho por conta de outrem e recibos verdes.">
   <meta name="keywords" content="calculadora salário líquido, IRS 2025, segurança social, recibo verde, salário Portugal, desconto IRS, salário bruto líquido, tabelas IRS 2025, retenção na fonte, IRS jovem">
   <meta name="author" content="SalárioNet">
-  <meta property="og:title" content="Calculadora Salário Líquido 2025 Portugal | SalárioNet">
+  <meta property="og:title" content="Calculadora Salário Líquido 2026 Portugal | SalárioNet">
   <meta property="og:description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_PT">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Calculadora Salário Líquido 2025 Portugal | SalárioNet">
+  <meta name="twitter:title" content="Calculadora Salário Líquido 2026 Portugal | SalárioNet">
   <meta name="twitter:description" content="Calcula o teu salário líquido em Portugal para 2025.">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6445553878327741" crossorigin="anonymous"></script>
@@ -576,7 +576,7 @@
 
       <div class="hero-intro">
         <h1>O teu salário <span>líquido</span> real</h1>
-        <p>Tabelas IRS 2025 · SS · IRS Jovem · Recibo Verde</p>
+        <p>Tabelas IRS 2026 · SS · IRS Jovem · Recibo Verde</p>
       </div>
 
       <!-- AD 2 — ABAIXO HEADER -->
@@ -724,10 +724,10 @@
             <div class="toggle-label">
               Subsídio de alimentação
               <span class="tip" tabindex="0" onclick="event.stopPropagation()">?
-                <span class="tip-box">Dinheiro: isento até €6,00/dia. Cartão refeição: isento até €10,20/dia. O excesso é tributado.</span>
+                <span class="tip-box">Dinheiro: isento até €6,15/dia. Cartão refeição: isento até €10,455/dia. O excesso é tributado.</span>
               </span>
             </div>
-            <div class="toggle-sub" id="alimSubText">Dinheiro: isento até €6,00/dia</div>
+            <div class="toggle-sub" id="alimSubText">Dinheiro: isento até €6,15/dia</div>
           </div>
           <label class="switch" onclick="event.stopPropagation()">
             <input type="checkbox" id="toggleAlimentacao" onchange="onAlimChange()">
@@ -738,8 +738,8 @@
           <div class="field-group" style="margin-bottom:10px;">
             <div class="sub-field-label">Tipo de pagamento</div>
             <select id="tipoAlim" onchange="onTipoAlimChange()">
-              <option value="dinheiro">Dinheiro (isento até €6,00/dia)</option>
-              <option value="cartao">Cartão Refeição (isento até €10,20/dia)</option>
+              <option value="dinheiro">Dinheiro (isento até €6,15/dia)</option>
+              <option value="cartao">Cartão Refeição (isento até €10,455/dia)</option>
             </select>
           </div>
           <div class="sub-field-row">
@@ -747,7 +747,7 @@
               <div class="sub-field-label">Valor por dia (€)</div>
               <div class="input-wrap">
                 <span class="input-pre">€</span>
-                <input type="number" id="alimentacaoDia" value="6.00" step="0.01" min="0">
+                <input type="number" id="alimentacaoDia" value="6.15" step="0.01" min="0">
               </div>
             </div>
             <div>
@@ -944,8 +944,8 @@
 
   <footer>
     <div class="container">
-      <p>Tabelas IRS 2025 — Autoridade Tributária e Aduaneira · Despacho nº 236-A/2025</p>
-      <p style="margin-top:4px;">© 2025 SalárioNet · Apenas para uso informativo</p>
+      <p>Tabelas IRS 2026 — Autoridade Tributária e Aduaneira · IAS 2026: €537,13 · SMN 2026: €920</p>
+      <p style="margin-top:4px;">© 2026 SalárioNet · Apenas para uso informativo</p>
     </div>
   </footer>
 
@@ -1007,22 +1007,26 @@
     function onTipoAlimChange() {
       const cartao = document.getElementById('tipoAlim').value === 'cartao';
       document.getElementById('alimSubText').textContent = cartao
-        ? 'Cartão refeição: isento até €10,20/dia'
-        : 'Dinheiro: isento até €6,00/dia';
-      document.getElementById('alimentacaoDia').value = cartao ? '10.20' : '6.00';
+        ? 'Cartão refeição: isento até €10,455/dia'
+        : 'Dinheiro: isento até €6,15/dia';
+      document.getElementById('alimentacaoDia').value = cartao ? '10.455' : '6.15';
     }
 
     // ── IRS TABLES 2025 (Despacho 236-A/2025) ──────────────────
     // [limite_superior, taxa, parcela_abater]
+    // Tabelas IRS 2026 — aguardar publicação AT (estimativa com base em 2025 + ajuste mínimo existência)
+    // Salário mínimo 2026: €870 → €920; IAS 2026: €537,13
+    // Limites subsídio alimentação 2026: dinheiro €6,15/dia; cartão €10,455/dia
+    // IRS Jovem limite 2026: 55 × €537,13 = €29.542 (igual a 2025 até publicação oficial)
     const ESCALOES_SOLTEIRO = [
-      [792,      0,      0],
-      [1007,     0.13,   0],
-      [1739,     0.185,  55.39],
-      [2155,     0.28,   233.52],
-      [3471,     0.35,   384.37],
-      [5765,     0.37,   453.80],
-      [7716,     0.395,  598.17],
-      [Infinity, 0.40,   636.75],
+      [820,      0,      0],
+      [1057,     0.13,   0],
+      [1810,     0.185,  57.51],
+      [2244,     0.28,   243.04],
+      [3614,     0.35,   400.12],
+      [6000,     0.37,   472.40],
+      [8033,     0.395,  622.40],
+      [Infinity, 0.40,   662.57],
     ];
 
     function calcularIRS(bruto, situacao, dependentes, irsJovemFator, deficiencia) {
@@ -1030,7 +1034,7 @@
 
       // Deficiência: 15% isento (máx €2500/ano = ~€208/mês)
       if (deficiencia) {
-        const isencao = Math.min(bruto * 0.15, 208.33);
+        const isencao = Math.min(bruto * 0.15, 214.17);
         base = bruto - isencao;
       }
 
@@ -1078,7 +1082,7 @@
       const duodecimos  = document.getElementById('toggleDuodecimos').checked && tipo === 'coe';
       const ativRV      = document.getElementById('ativRV').value;
 
-      const LIMITE_ALIM = tipoAlim === 'cartao' ? 10.20 : 6.00;
+      const LIMITE_ALIM = tipoAlim === 'cartao' ? 10.455 : 6.15;
       const alimIsento  = comAlim ? Math.min(alimDia, LIMITE_ALIM) * alimDias : 0;
       const alimTributavel = comAlim ? Math.max(0, alimDia - LIMITE_ALIM) * alimDias : 0;
       const alimTotal   = comAlim ? alimDia * alimDias : 0;
@@ -1182,8 +1186,8 @@
         document.getElementById('statAlim').textContent  = '€' + fmt(alimIsento);
         document.getElementById('statAlimSub').textContent =
           tipoAlim === 'cartao'
-            ? 'Cartão refeição (isento até €10,20/dia)'
-            : 'Dinheiro (isento até €6,00/dia)';
+            ? 'Cartão refeição (isento até €10,455/dia)'
+            : 'Dinheiro (isento até €6,15/dia)';
       } else {
         alimCard.style.display = 'none';
       }
@@ -1206,7 +1210,7 @@
       ];
 
       if (deficiencia && tipo === 'coe') {
-        const isencao = Math.min(bruto * 0.15, 208.33);
+        const isencao = Math.min(bruto * 0.15, 214.17);
         rows.push({ label: '  → Isenção deficiência (15%, máx €208/mês)', val: '-€' + fmt(isencao), cls: 'pos', sub: true });
       }
       if (irsJovem && tipo === 'coe') {
@@ -1296,7 +1300,7 @@
       document.getElementById('toggleDeficiencia').checked = false;
       document.getElementById('toggleAlimentacao').checked = false;
       document.getElementById('alimentacaoFields').classList.remove('open');
-      document.getElementById('alimentacaoDia').value   = '6.00';
+      document.getElementById('alimentacaoDia').value   = '6.15';
       document.getElementById('alimentacaoDias').value  = '22';
       document.getElementById('tipoAlim').value         = 'dinheiro';
       document.getElementById('alimSubText').textContent = 'Dinheiro: isento até €6,00/dia';
@@ -1327,11 +1331,13 @@
     }
 
     // ── TOAST ──────────────────────────────────────────────────
+    let _toastTimer = null;
     function showToast(msg) {
       const t = document.getElementById('toast');
       t.textContent = msg;
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2800);
+      if (_toastTimer) clearTimeout(_toastTimer);
+      _toastTimer = setTimeout(() => { t.classList.remove('show'); _toastTimer = null; }, 2800);
     }
 
     // ── URL AUTO-FILL ──────────────────────────────────────────
