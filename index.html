@@ -78,9 +78,8 @@
       min-height: 100vh;
       transition: background-color 0.3s, color 0.3s;
       line-height: 1.6;
-      padding-bottom: 72px;
+      padding-bottom: 80px;
     }
-    @media (min-width: 769px) { body { padding-bottom: 0; } }
 
     .container {
       max-width: 560px;
@@ -108,21 +107,56 @@
     .rail-right { right: calc(50% - 280px - var(--rail-w) - var(--rail-gap)); }
     @media (min-width: 1060px) { .rail { display: block; } }
 
-    #ad-sticky-bottom {
-      display: none; position: fixed;
-      bottom: 0; left: 0; right: 0; z-index: 200;
+    /* ── ACTION BAR FIXA ── */
+    #action-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
       background: var(--bg-secondary);
       border-top: 1px solid var(--border);
-      padding: 6px 0; text-align: center;
+      padding: 10px 16px;
+      display: flex; gap: 8px; align-items: center;
       transition: background-color 0.3s;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
     }
-    #ad-sticky-bottom .close-btn {
-      position: absolute; top: 4px; right: 8px;
-      background: none; border: none;
-      color: var(--text-muted); font-size: 18px;
-      cursor: pointer; line-height: 1; padding: 2px 6px;
+    #action-bar .ab-calc {
+      flex: 1; padding: 13px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+      color: #fff; border: none; border-radius: var(--radius-md);
+      font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all var(--transition);
     }
-    @media (max-width: 768px) { #ad-sticky-bottom { display: block; } }
+    #action-bar .ab-calc:hover {
+      background: linear-gradient(135deg, var(--green-light), var(--green-accent));
+      box-shadow: 0 4px 16px rgba(82,183,136,0.35);
+    }
+    #action-bar .ab-icon {
+      width: 46px; height: 46px; border-radius: var(--radius-sm);
+      background: var(--bg-input); border: 1.5px solid var(--border);
+      color: var(--text-secondary); font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all var(--transition); flex-shrink: 0;
+    }
+    #action-bar .ab-icon:hover { border-color: var(--green-accent); color: var(--green-accent); }
+    #action-bar .ab-icon.disabled { opacity: 0.35; pointer-events: none; }
+
+    /* ── PRINT / PDF ── */
+    @media print {
+      #ad-sticky-top, .rail, .ad-strip, .ad-rect, .ad-leader,
+      #action-bar, header .theme-toggle, .jovem-box,
+      .btn-primary, .btn-row, .tip { display: none !important; }
+      body { background: #fff !important; color: #111 !important; padding: 0 !important; }
+      .card { border: 1px solid #ddd !important; background: #fff !important; break-inside: avoid; }
+      .result-hero { background: #1a472a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #results-section { opacity: 1 !important; transform: none !important; pointer-events: all !important; }
+      .stat-pill { border: 1px solid #ddd !important; background: #fff !important; }
+      .bar-liq { background: #2d6a4f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .bar-irs { background: #f87171 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .bar-ss  { background: #fbbf24 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .visual-bar { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .hero-badge { background: rgba(0,0,0,0.08) !important; color: #333 !important; }
+      footer { display: block !important; }
+      .print-header { display: block !important; }
+    }
+    .print-header { display: none; }
 
     /* ── HEADER ── */
     header {
@@ -777,11 +811,6 @@
         </div>
       </div>
 
-      <button class="btn-primary" onclick="calcular()">Calcular salário líquido</button>
-      <div class="btn-row">
-        <button class="btn-secondary" onclick="partilhar()">Partilhar</button>
-        <button class="btn-secondary" onclick="limpar()">Limpar</button>
-      </div>
 
       <!-- AD 4 — ENTRE FORM E RESULTADOS -->
       <div class="ad-leader">
@@ -920,13 +949,12 @@
     </div>
   </footer>
 
-  <!-- AD 10 — STICKY BOTTOM MOBILE -->
-  <div id="ad-sticky-bottom">
-    <button class="close-btn" onclick="document.getElementById('ad-sticky-bottom').style.display='none'" aria-label="Fechar">×</button>
-    <ins class="adsbygoogle" style="display:block"
-         data-ad-client="ca-pub-6445553878327741"
-         data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <!-- BARRA DE AÇÃO FIXA -->
+  <div id="action-bar">
+    <button class="ab-icon disabled" id="btnPdf" onclick="gerarPDF()" title="Guardar PDF">📄</button>
+    <button class="ab-calc" onclick="calcular()">Calcular salário líquido</button>
+    <button class="ab-icon disabled" id="btnPartilhar" onclick="partilhar()" title="Partilhar">🔗</button>
+    <button class="ab-icon" onclick="limpar()" title="Limpar">✕</button>
   </div>
 
   <div class="toast" id="toast"></div>
@@ -1224,6 +1252,7 @@
 
       const sec = document.getElementById('results-section');
       sec.classList.add('visible');
+      setResultsReady(true);
       setTimeout(() => sec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
     }
 
@@ -1278,8 +1307,23 @@
       document.getElementById('rowIrsJovem').style.display   = '';
       document.getElementById('results-section').classList.remove('visible');
       document.getElementById('jovemBox').classList.remove('show');
+      setResultsReady(false);
       history.replaceState(null, '', location.pathname);
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── PDF ────────────────────────────────────────────────────
+    function gerarPDF() {
+      if (!document.getElementById('results-section').classList.contains('visible')) return;
+      const titulo = document.title;
+      document.title = 'SalárioNet — ' + document.getElementById('heroLiquido').textContent + ' líquido';
+      window.print();
+      document.title = titulo;
+    }
+
+    function setResultsReady(ready) {
+      document.getElementById('btnPdf').classList.toggle('disabled', !ready);
+      document.getElementById('btnPartilhar').classList.toggle('disabled', !ready);
     }
 
     // ── TOAST ──────────────────────────────────────────────────
