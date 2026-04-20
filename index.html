@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora Salário Líquido 2025 Portugal | SalárioNet</title>
   <meta name="description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social para trabalho por conta de outrem e recibos verdes.">
-  <meta name="keywords" content="calculadora salário líquido, IRS 2025, segurança social, recibo verde, salário Portugal, desconto IRS, salário bruto líquido, tabelas IRS 2025, retenção na fonte">
+  <meta name="keywords" content="calculadora salário líquido, IRS 2025, segurança social, recibo verde, salário Portugal, desconto IRS, salário bruto líquido, tabelas IRS 2025, retenção na fonte, IRS jovem">
   <meta name="author" content="SalárioNet">
-  <!-- Open Graph -->
   <meta property="og:title" content="Calculadora Salário Líquido 2025 Portugal | SalárioNet">
-  <meta property="og:description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social para trabalho por conta de outrem e recibos verdes.">
+  <meta property="og:description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_PT">
   <meta name="twitter:card" content="summary">
@@ -23,628 +22,508 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================================
-       CSS VARIABLES & RESET
-    ========================================= */
     :root {
-      --green-dark: #1a472a;
-      --green-mid: #2d6a4f;
-      --green-light: #40916c;
-      --green-accent: #52b788;
-      --green-bright: #74c69d;
+      --green-dark:    #1a472a;
+      --green-mid:     #2d6a4f;
+      --green-light:   #40916c;
+      --green-accent:  #52b788;
+      --green-bright:  #74c69d;
+      --red:           #f87171;
+      --yellow:        #fbbf24;
+      --blue:          #60a5fa;
 
-      --bg-primary: #0f1512;
-      --bg-secondary: #161e18;
-      --bg-card: #1c2820;
-      --bg-input: #222e26;
-      --bg-hover: #2a3a2e;
+      --bg-primary:    #0f1512;
+      --bg-secondary:  #161e18;
+      --bg-card:       #1c2820;
+      --bg-input:      #222e26;
+      --bg-hover:      #2a3a2e;
 
-      --text-primary: #e8f5e9;
-      --text-secondary: #a5c4aa;
-      --text-muted: #6b8f72;
-      --text-label: #c8deca;
+      --text-primary:  #e8f5e9;
+      --text-secondary:#a5c4aa;
+      --text-muted:    #6b8f72;
+      --text-label:    #c8deca;
 
-      --border-color: #2a3a2e;
-      --border-focus: #52b788;
+      --border:        #2a3a2e;
+      --border-focus:  #52b788;
 
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
-      --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,0.5);
+      --radius-sm:     10px;
+      --radius-md:     14px;
+      --radius-lg:     20px;
+      --transition:    0.2s ease;
 
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-
-      --transition: 0.2s ease;
-
-      /* Ad rail width — how far the page shifts on very wide screens */
-      --rail-w: 160px;
-      --rail-gap: 16px;
+      --rail-w:        160px;
+      --rail-gap:      16px;
     }
 
     [data-theme="light"] {
-      --bg-primary: #f0f7f2;
-      --bg-secondary: #e8f5eb;
-      --bg-card: #ffffff;
-      --bg-input: #f5faf6;
-      --bg-hover: #e8f5eb;
-      --text-primary: #1a2e1e;
-      --text-secondary: #2d6a4f;
-      --text-muted: #5a8a65;
-      --text-label: #2d4a32;
-      --border-color: #c8e6c9;
-      --border-focus: #40916c;
-      --shadow-sm: 0 2px 8px rgba(26,71,42,0.08);
-      --shadow-md: 0 4px 20px rgba(26,71,42,0.12);
-      --shadow-lg: 0 8px 40px rgba(26,71,42,0.15);
+      --bg-primary:    #f4f7f5;
+      --bg-secondary:  #ffffff;
+      --bg-card:       #ffffff;
+      --bg-input:      #f0f5f2;
+      --bg-hover:      #e8f0eb;
+      --text-primary:  #1a2e1e;
+      --text-secondary:#3d5a42;
+      --text-muted:    #7a9e82;
+      --text-label:    #2d4a32;
+      --border:        #d4e6d9;
+      --border-focus:  #2d6a4f;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-primary);
+      background: var(--bg-primary);
       color: var(--text-primary);
       min-height: 100vh;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s, color 0.3s;
       line-height: 1.6;
-      /* Extra bottom padding for sticky bottom banner on mobile */
-      padding-bottom: 64px;
+      padding-bottom: 72px;
     }
+    @media (min-width: 769px) { body { padding-bottom: 0; } }
 
-    /* ── 1. STICKY TOP BANNER ────────────────── */
-    #ad-sticky-top {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border-color);
-      padding: 6px 0;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-
-    /* ── 2. BELOW-HEADER BANNER ─────────────── */
-    .ad-strip {
-      margin: 0 0 20px;
-      text-align: center;
-    }
-
-    /* ── 3. IN-CONTENT RECTANGLE ────────────── */
-    .ad-rect {
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    /* ── 4. LEADERBOARD ─────────────────────── */
-    .ad-leader {
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    /* ── 5. DESKTOP SIDE RAILS ──────────────── */
-    .rail {
-      display: none;
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 50;
-    }
-    .rail-left  { left: calc(50% - 360px - var(--rail-w) - var(--rail-gap)); }
-    .rail-right { right: calc(50% - 360px - var(--rail-w) - var(--rail-gap)); }
-    @media (min-width: 1100px) {
-      .rail { display: block; }
-    }
-
-    /* ── 6. STICKY BOTTOM BANNER (mobile) ────── */
-    #ad-sticky-bottom {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border-color);
-      padding: 6px 0 6px;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-    #ad-sticky-bottom .close-btn {
-      position: absolute;
-      top: 4px;
-      right: 8px;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 16px;
-      cursor: pointer;
-      line-height: 1;
-      padding: 2px 4px;
-    }
-    @media (max-width: 768px) {
-      #ad-sticky-bottom { display: block; }
-    }
-    /* on desktop the sticky-bottom is hidden so padding-bottom not needed */
-    @media (min-width: 769px) {
-      body { padding-bottom: 0; }
-    }
-
-    /* =========================================
-       LAYOUT
-    ========================================= */
     .container {
-      max-width: 720px;
+      max-width: 560px;
       margin: 0 auto;
       padding: 0 16px;
     }
 
-    /* =========================================
-       HEADER
-    ========================================= */
+    /* ── AD ZONES ── */
+    #ad-sticky-top {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0; text-align: center;
+      transition: background-color 0.3s;
+    }
+    .ad-strip  { margin: 0 0 16px; text-align: center; }
+    .ad-rect   { margin: 16px 0;   text-align: center; }
+    .ad-leader { margin: 16px 0;   text-align: center; }
+    .rail {
+      display: none; position: fixed;
+      top: 50%; transform: translateY(-50%);
+      z-index: 50;
+    }
+    .rail-left  { left:  calc(50% - 280px - var(--rail-w) - var(--rail-gap)); }
+    .rail-right { right: calc(50% - 280px - var(--rail-w) - var(--rail-gap)); }
+    @media (min-width: 1060px) { .rail { display: block; } }
+
+    #ad-sticky-bottom {
+      display: none; position: fixed;
+      bottom: 0; left: 0; right: 0; z-index: 200;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 6px 0; text-align: center;
+      transition: background-color 0.3s;
+    }
+    #ad-sticky-bottom .close-btn {
+      position: absolute; top: 4px; right: 8px;
+      background: none; border: none;
+      color: var(--text-muted); font-size: 18px;
+      cursor: pointer; line-height: 1; padding: 2px 6px;
+    }
+    @media (max-width: 768px) { #ad-sticky-bottom { display: block; } }
+
+    /* ── HEADER ── */
     header {
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 20px;
-      background-color: var(--bg-primary);
-      transition: background-color 0.3s ease;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      transition: background-color 0.3s;
     }
     header .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text-primary);
     }
     .logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 34px; height: 34px; border-radius: 9px;
       background: linear-gradient(135deg, var(--green-mid), var(--green-accent));
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800; color: #fff;
     }
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.3px;
-    }
+    .logo-text { font-size: 18px; font-weight: 700; }
     .logo-text span { color: var(--green-accent); }
 
     .theme-toggle {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 50px;
-      padding: 6px 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      font-family: 'Inter', sans-serif;
+      display: flex; align-items: center; gap: 6px;
+      background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: 50px; padding: 7px 14px;
+      font-size: 13px; font-weight: 500; color: var(--text-secondary);
+      font-family: 'Inter', sans-serif; cursor: pointer;
       transition: all var(--transition);
     }
-    .theme-toggle:hover { border-color: var(--green-accent); color: var(--text-primary); }
+    .theme-toggle:hover { border-color: var(--green-accent); color: var(--green-accent); }
 
-    /* =========================================
-       CARD
-    ========================================= */
+    /* ── HERO INTRO ── */
+    .hero-intro {
+      text-align: center;
+      padding: 28px 0 8px;
+    }
+    .hero-intro h1 {
+      font-size: clamp(20px, 5vw, 26px);
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .hero-intro h1 span { color: var(--green-accent); }
+    .hero-intro p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── CARDS ── */
     .card {
       background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 28px;
-      margin-bottom: 20px;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm);
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      padding: 20px;
+      margin-bottom: 12px;
+      transition: background-color 0.3s, border-color 0.3s;
     }
-    .card-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 20px;
+    .card-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .card-header-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(82,183,136,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .card-header-title {
+      font-size: 14px; font-weight: 600;
+      color: var(--text-label); text-transform: uppercase;
+      letter-spacing: 0.6px;
     }
 
-    /* =========================================
-       FORM INPUTS
-    ========================================= */
-    .field-group { margin-bottom: 20px; }
-
+    /* ── FORM FIELDS ── */
+    .field-group { margin-bottom: 16px; }
     .field-label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-label);
-      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500;
+      color: var(--text-label); margin-bottom: 7px;
     }
-    .field-label .tooltip-trigger {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--bg-hover);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      flex-shrink: 0;
+    .tip {
+      width: 17px; height: 17px; border-radius: 50%;
+      background: var(--bg-hover); border: 1px solid var(--border);
+      color: var(--text-muted); font-size: 10px; font-weight: 700;
+      cursor: pointer; display: inline-flex; align-items: center;
+      justify-content: center; position: relative; flex-shrink: 0;
       transition: all var(--transition);
     }
-    .field-label .tooltip-trigger:hover { background: var(--green-mid); color: #fff; border-color: var(--green-mid); }
-
-    .tooltip-trigger .tooltip-box {
-      display: none;
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
+    .tip:hover { background: var(--green-mid); color: #fff; border-color: var(--green-mid); }
+    .tip .tip-box {
+      display: none; position: absolute;
+      bottom: calc(100% + 8px); left: 50%;
       transform: translateX(-50%);
-      background: #1a2e1e;
-      color: #e8f5e9;
-      font-size: 12px;
-      font-weight: 400;
-      padding: 8px 12px;
-      border-radius: var(--radius-sm);
-      width: 220px;
-      line-height: 1.5;
-      z-index: 300;
-      text-align: left;
-      box-shadow: var(--shadow-md);
+      background: #1a2e1e; color: #e8f5e9;
+      font-size: 12px; font-weight: 400;
+      padding: 10px 13px; border-radius: var(--radius-sm);
+      width: 230px; line-height: 1.5; z-index: 300;
+      text-align: left; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
       pointer-events: none;
     }
-    .tooltip-trigger .tooltip-box::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 5px solid transparent;
-      border-top-color: #1a2e1e;
+    .tip .tip-box::after {
+      content: ''; position: absolute;
+      top: 100%; left: 50%; transform: translateX(-50%);
+      border: 5px solid transparent; border-top-color: #1a2e1e;
     }
-    .tooltip-trigger:hover .tooltip-box { display: block; }
+    .tip:hover .tip-box, .tip:focus .tip-box { display: block; }
 
-    .input-wrapper { position: relative; display: flex; align-items: center; }
-    .input-prefix {
-      position: absolute;
-      left: 14px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-muted);
-      pointer-events: none;
+    .input-wrap { position: relative; display: flex; align-items: center; }
+    .input-pre {
+      position: absolute; left: 13px;
+      font-size: 14px; font-weight: 500;
+      color: var(--text-muted); pointer-events: none;
     }
 
     input[type="number"], select {
       width: 100%;
       background: var(--bg-input);
-      border: 1.5px solid var(--border-color);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 13px 16px 13px 36px;
-      font-size: 16px;
-      font-family: 'Inter', sans-serif;
-      color: var(--text-primary);
-      outline: none;
-      transition: border-color var(--transition), background-color 0.3s ease;
+      padding: 13px 14px 13px 34px;
+      font-size: 16px; font-family: 'Inter', sans-serif;
+      color: var(--text-primary); outline: none;
+      transition: border-color var(--transition), background-color 0.3s;
       -moz-appearance: textfield;
     }
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
     select {
-      padding-left: 16px;
-      cursor: pointer;
-      appearance: none;
+      padding-left: 14px; cursor: pointer; appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8f72' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
+      background-repeat: no-repeat; background-position: right 13px center;
     }
-    input[type="number"]:focus, select:focus { border-color: var(--border-focus); background: var(--bg-hover); }
+    input[type="number"]:focus, select:focus {
+      border-color: var(--border-focus); background: var(--bg-hover);
+    }
 
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 420px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    /* ── TOGGLE ROW ── */
     .toggle-row {
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       justify-content: space-between;
-      padding: 14px 16px;
+      padding: 13px 14px;
       background: var(--bg-input);
-      border: 1.5px solid var(--border-color);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-sm);
-      margin-bottom: 10px;
-      transition: background-color 0.3s ease;
+      margin-bottom: 8px;
+      transition: background-color 0.3s, border-color 0.3s;
+      cursor: pointer;
     }
+    .toggle-row:hover { border-color: var(--border-focus); }
     .toggle-info { display: flex; flex-direction: column; gap: 2px; }
-    .toggle-info .toggle-label {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-label);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .toggle-info .toggle-sub { font-size: 12px; color: var(--text-muted); }
+    .toggle-label { font-size: 14px; font-weight: 500; color: var(--text-label); display: flex; align-items: center; gap: 6px; }
+    .toggle-sub { font-size: 11px; color: var(--text-muted); }
 
-    .switch { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+    .switch { position: relative; width: 42px; height: 23px; flex-shrink: 0; }
     .switch input { opacity: 0; width: 0; height: 0; }
     .slider {
-      position: absolute;
-      cursor: pointer;
-      inset: 0;
-      background: var(--bg-hover);
-      border-radius: 50px;
-      transition: background-color 0.2s ease;
-      border: 1.5px solid var(--border-color);
+      position: absolute; cursor: pointer; inset: 0;
+      background: var(--bg-hover); border-radius: 50px;
+      transition: background-color 0.2s; border: 1.5px solid var(--border);
     }
     .slider::before {
-      content: '';
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      left: 3px;
-      top: 50%;
+      content: ''; position: absolute;
+      width: 15px; height: 15px; left: 3px; top: 50%;
       transform: translateY(-50%);
-      background: var(--text-muted);
-      border-radius: 50%;
-      transition: all 0.2s ease;
+      background: var(--text-muted); border-radius: 50%;
+      transition: all 0.2s;
     }
     .switch input:checked + .slider { background: var(--green-mid); border-color: var(--green-mid); }
-    .switch input:checked + .slider::before { transform: translateX(20px) translateY(-50%); background: #fff; }
+    .switch input:checked + .slider::before { transform: translateX(19px) translateY(-50%); background: #fff; }
 
     .sub-field {
-      display: none;
-      margin-top: 10px;
-      padding: 16px;
-      background: var(--bg-input);
-      border-radius: var(--radius-sm);
-      border: 1.5px solid var(--border-color);
+      display: none; margin: 8px 0 12px;
+      padding: 14px; background: var(--bg-input);
+      border-radius: var(--radius-sm); border: 1.5px solid var(--border);
     }
-    .sub-field.visible { display: block; }
-    .sub-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .sub-field-label { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
-    .sub-field input { width: 100%; padding-left: 32px; }
+    .sub-field.open { display: block; }
+    .sub-field-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
+    .sub-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    /* ── BADGE TAG ── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 20px;
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .badge-new { background: rgba(96,165,250,0.15); color: var(--blue); }
+    .badge-tip { background: rgba(82,183,136,0.12); color: var(--green-accent); }
 
-    /* =========================================
-       BUTTONS
-    ========================================= */
+    /* ── SECTION DIVIDER ── */
+    .section-label {
+      font-size: 11px; font-weight: 600;
+      color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 0.8px; margin: 20px 0 10px;
+    }
+
+    /* ── BUTTONS ── */
     .btn-primary {
-      width: 100%;
-      padding: 16px;
+      width: 100%; padding: 15px;
       background: linear-gradient(135deg, var(--green-mid), var(--green-light));
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-md);
-      font-size: 16px;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: all var(--transition);
-      letter-spacing: 0.2px;
+      color: #fff; border: none; border-radius: var(--radius-md);
+      font-size: 16px; font-weight: 700; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all var(--transition);
+      letter-spacing: 0.2px; margin-top: 4px;
     }
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--green-light), var(--green-accent));
       transform: translateY(-1px);
-      box-shadow: 0 4px 20px rgba(82,183,136,0.3);
+      box-shadow: 0 6px 20px rgba(82,183,136,0.3);
     }
     .btn-primary:active { transform: translateY(0); }
 
-    .btn-row { display: flex; gap: 10px; margin-top: 20px; }
+    .btn-row { display: flex; gap: 8px; margin-top: 10px; }
     .btn-secondary {
-      flex: 1;
-      padding: 13px 20px;
-      background: transparent;
-      color: var(--text-secondary);
-      border: 1.5px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 500;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: all var(--transition);
+      flex: 1; padding: 12px;
+      background: transparent; color: var(--text-secondary);
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 500; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all var(--transition);
     }
     .btn-secondary:hover { border-color: var(--green-accent); color: var(--green-accent); }
 
-    /* =========================================
-       RESULTS
-    ========================================= */
+    /* ── RESULTS ── */
     #results-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.4s, transform 0.4s;
       pointer-events: none;
     }
-    #results-section.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    #results-section.visible { opacity: 1; transform: none; pointer-events: all; }
 
+    /* Hero */
     .result-hero {
-      text-align: center;
-      padding: 32px 20px;
       background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
       border-radius: var(--radius-lg);
-      margin-bottom: 16px;
-      position: relative;
-      overflow: hidden;
+      padding: 28px 20px;
+      text-align: center;
+      margin-bottom: 12px;
+      position: relative; overflow: hidden;
     }
     .result-hero::before {
-      content: '';
-      position: absolute;
-      top: -40%; right: -10%;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
+      content: ''; position: absolute;
+      top: -30%; right: -10%;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: rgba(255,255,255,0.05);
     }
-    .result-hero::after {
-      content: '';
-      position: absolute;
-      bottom: -30%; left: -5%;
-      width: 150px; height: 150px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.03);
+    .result-hero-label {
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px;
     }
-    .result-hero-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-    .result-hero-value { font-size: clamp(36px, 8vw, 52px); font-weight: 800; color: #fff; letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
-    .result-hero-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .result-hero-value {
+      font-size: clamp(38px, 9vw, 54px); font-weight: 800;
+      color: #fff; letter-spacing: -1.5px; line-height: 1;
+      margin-bottom: 6px;
+    }
+    .result-hero-sub { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .result-hero-badges {
+      display: flex; gap: 6px; justify-content: center;
+      flex-wrap: wrap; margin-top: 10px;
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8);
+      border-radius: 20px; padding: 3px 10px;
+      font-size: 11px; font-weight: 600;
+    }
 
-    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px; }
-    .stat-card {
+    /* Stat pills — horizontal scroll row on mobile */
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-bottom: 12px;
+    }
+    .stat-pill {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 18px;
-      transition: background-color 0.3s ease;
+      padding: 14px 16px;
+      transition: background-color 0.3s;
     }
-    .stat-card.full-width { grid-column: 1 / -1; }
-    .stat-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 6px; }
-    .stat-value { font-size: 22px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px; }
-    .stat-value.negative { color: #f87171; }
-    .stat-value.positive { color: var(--green-bright); }
-    .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+    .stat-pill.full { grid-column: 1 / -1; }
+    .stat-pill.accent { border-color: rgba(82,183,136,0.3); background: rgba(82,183,136,0.05); }
+    .sp-label { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .sp-value { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; color: var(--text-primary); }
+    .sp-value.neg { color: var(--red); }
+    .sp-value.pos { color: var(--green-bright); }
+    .sp-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
-    .visual-bar-title { font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 10px; }
-    .visual-bar { height: 28px; border-radius: 50px; overflow: hidden; display: flex; background: var(--bg-hover); }
-    .bar-segment { height: 100%; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
-    .bar-liquido { background: linear-gradient(90deg, var(--green-mid), var(--green-accent)); }
-    .bar-irs { background: #f87171; }
-    .bar-ss { background: #fbbf24; }
-    .bar-legend { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
-    .bar-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
-    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    /* Visual bar */
+    .bar-wrap { margin-bottom: 12px; }
+    .bar-title { font-size: 12px; font-weight: 500; color: var(--text-secondary); margin-bottom: 8px; }
+    .visual-bar {
+      height: 24px; border-radius: 50px;
+      overflow: hidden; display: flex; background: var(--bg-hover);
+    }
+    .bar-seg { height: 100%; transition: width 0.7s cubic-bezier(0.4,0,0.2,1); }
+    .bar-liq { background: linear-gradient(90deg, var(--green-mid), var(--green-accent)); }
+    .bar-irs { background: var(--red); }
+    .bar-ss  { background: var(--yellow); }
+    .bar-legend {
+      display: flex; gap: 14px; margin-top: 8px; flex-wrap: wrap;
+    }
+    .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-secondary); }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
+    /* Breakdown table */
     .breakdown-table { width: 100%; border-collapse: collapse; }
-    .breakdown-table tr { border-bottom: 1px solid var(--border-color); }
+    .breakdown-table tr { border-bottom: 1px solid var(--border); }
     .breakdown-table tr:last-child { border-bottom: none; }
-    .breakdown-table td { padding: 12px 4px; font-size: 14px; }
+    .breakdown-table td { padding: 11px 2px; font-size: 13px; vertical-align: middle; }
     .breakdown-table td:first-child { color: var(--text-secondary); }
     .breakdown-table td:last-child { text-align: right; font-weight: 600; color: var(--text-primary); }
-    .breakdown-table tr.total-row td {
-      font-size: 15px;
-      font-weight: 700;
-      padding-top: 16px;
-      padding-bottom: 4px;
+    .breakdown-table .neg { color: var(--red) !important; }
+    .breakdown-table .pos { color: var(--green-bright) !important; }
+    .breakdown-table .row-total td {
+      font-size: 14px; font-weight: 700; padding-top: 14px; padding-bottom: 4px;
       color: var(--green-accent) !important;
-      border-top: 2px solid var(--border-color);
-      border-bottom: none;
+      border-top: 2px solid var(--border); border-bottom: none;
     }
-    .breakdown-table td.deduction { color: #f87171 !important; }
+    .breakdown-table .row-sub td { color: var(--text-muted); font-size: 12px; }
 
-    .warning-banner {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 12px 16px;
-      background: rgba(251,191,36,0.08);
-      border: 1px solid rgba(251,191,36,0.2);
+    .disclaimer {
+      display: flex; align-items: flex-start; gap: 8px;
+      padding: 11px 13px; margin-top: 14px;
+      background: rgba(251,191,36,0.06);
+      border: 1px solid rgba(251,191,36,0.18);
       border-radius: var(--radius-sm);
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 16px;
+      font-size: 11px; color: var(--text-muted); line-height: 1.5;
     }
-    .warning-banner .icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
 
-    /* =========================================
-       TOAST
-    ========================================= */
+    /* ── TOAST ── */
     .toast {
-      position: fixed;
-      bottom: 72px;
-      left: 50%;
-      transform: translateX(-50%) translateY(80px);
-      background: var(--green-mid);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: var(--shadow-lg);
-      z-index: 999;
-      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      position: fixed; bottom: 80px; left: 50%;
+      transform: translateX(-50%) translateY(60px);
+      background: var(--green-mid); color: #fff;
+      padding: 11px 22px; border-radius: 50px;
+      font-size: 13px; font-weight: 500;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      z-index: 999; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
       white-space: nowrap;
     }
     .toast.show { transform: translateX(-50%) translateY(0); }
-    @media (min-width: 769px) {
-      .toast { bottom: 24px; }
-    }
+    @media (min-width: 769px) { .toast { bottom: 24px; } }
 
-    /* =========================================
-       FOOTER
-    ========================================= */
+    /* ── FOOTER ── */
     footer {
-      text-align: center;
-      padding: 32px 16px 24px;
-      color: var(--text-muted);
-      font-size: 12px;
-      border-top: 1px solid var(--border-color);
-      margin-top: 20px;
+      text-align: center; padding: 28px 16px 20px;
+      color: var(--text-muted); font-size: 11px;
+      border-top: 1px solid var(--border); margin-top: 8px;
     }
-    footer a { color: var(--green-accent); text-decoration: none; }
 
-    /* =========================================
-       RESPONSIVE
-    ========================================= */
-    @media (max-width: 520px) {
-      .card { padding: 20px 16px; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .stat-card.full-width { grid-column: auto; }
-      .sub-field-row { grid-template-columns: 1fr; }
-      header { padding: 12px 0; margin-bottom: 0; }
+    /* ── IRS JOVEM CALLOUT ── */
+    .jovem-box {
+      background: rgba(96,165,250,0.07);
+      border: 1.5px solid rgba(96,165,250,0.2);
+      border-radius: var(--radius-md);
+      padding: 13px 15px; margin-bottom: 16px;
+      display: none;
     }
+    .jovem-box.show { display: block; }
+    .jovem-box-title {
+      font-size: 12px; font-weight: 700; color: var(--blue);
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .jovem-box p { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+    .jovem-box strong { color: var(--blue); }
   </style>
 </head>
 
 <body data-theme="dark">
 
-  <!-- =====================================================
-       AD 1 — STICKY TOP BANNER (728×90 / 320×50 mobile)
-       Máxima visibilidade: aparece no topo da página,
-       persiste durante o scroll.
-  ====================================================== -->
+  <!-- AD 1 — STICKY TOP -->
   <div id="ad-sticky-top">
-    <ins class="adsbygoogle"
-         style="display:block"
+    <ins class="adsbygoogle" style="display:block"
          data-ad-client="ca-pub-6445553878327741"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+         data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- =====================================================
-       DESKTOP RAIL LEFT — Skyscraper 160×600
-       Visível apenas em ecrãs ≥ 1100 px.
-  ====================================================== -->
+  <!-- RAILS DESKTOP -->
   <div class="rail rail-left">
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:160px;height:600px"
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px"
          data-ad-client="ca-pub-6445553878327741"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+         data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
-
   <div class="rail rail-right">
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:160px;height:600px"
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px"
          data-ad-client="ca-pub-6445553878327741"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+         data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- HEADER -->
   <header>
     <div class="container">
       <a href="#" class="logo" aria-label="SalárioNet">
@@ -652,7 +531,7 @@
         <span class="logo-text">Salário<span>Net</span></span>
       </a>
       <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
-        <span class="icon" id="themeIcon">☀️</span>
+        <span id="themeIcon">☀️</span>
         <span id="themeLabel">Claro</span>
       </button>
     </div>
@@ -661,47 +540,48 @@
   <main>
     <div class="container">
 
-      <!-- =====================================================
-           AD 2 — BELOW HEADER LEADERBOARD (728×90)
-           Primeira posição visível sem scroll — alta taxa de CTR.
-      ====================================================== -->
+      <div class="hero-intro">
+        <h1>O teu salário <span>líquido</span> real</h1>
+        <p>Tabelas IRS 2025 · SS · IRS Jovem · Recibo Verde</p>
+      </div>
+
+      <!-- AD 2 — ABAIXO HEADER -->
       <div class="ad-strip">
-        <ins class="adsbygoogle"
-             style="display:block"
+        <ins class="adsbygoogle" style="display:block"
              data-ad-client="ca-pub-6445553878327741"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
-      <!-- ════════════════ FORM CARD ════════════════ -->
+      <!-- ═══ CARD: DADOS BÁSICOS ═══ -->
       <div class="card">
-        <p class="card-title">Dados do Salário</p>
+        <div class="card-header">
+          <div class="card-header-icon">💶</div>
+          <span class="card-header-title">Dados do salário</span>
+        </div>
 
-        <!-- Salário bruto -->
         <div class="field-group">
           <label class="field-label" for="brutoPay">
             Salário bruto mensal
-            <span class="tooltip-trigger" tabindex="0">?
-              <span class="tooltip-box">O valor que está no teu contrato antes de qualquer desconto. Não inclui subsídio de alimentação.</span>
+            <span class="tip" tabindex="0">?
+              <span class="tip-box">O valor no teu contrato antes de qualquer desconto. Não inclui subsídio de alimentação.</span>
             </span>
           </label>
-          <div class="input-wrapper">
-            <span class="input-prefix">€</span>
+          <div class="input-wrap">
+            <span class="input-pre">€</span>
             <input type="number" id="brutoPay" placeholder="1 500" min="0" step="1" inputmode="decimal">
           </div>
         </div>
 
-        <!-- Tipo + Situação familiar -->
         <div class="grid-2">
           <div class="field-group">
             <label class="field-label" for="tipoContrato">
               Tipo de contrato
-              <span class="tooltip-trigger" tabindex="0">?
-                <span class="tooltip-box">Trabalhador por conta de outrem (empresa desconta IRS e SS). Recibo verde (trabalhador independente).</span>
+              <span class="tip" tabindex="0">?
+                <span class="tip-box">Conta de outrem: empresa desconta IRS e SS. Recibo verde: trabalhador independente paga SS trimestral.</span>
               </span>
             </label>
-            <select id="tipoContrato">
+            <select id="tipoContrato" onchange="onTipoChange()">
               <option value="coe">Conta de Outrem</option>
               <option value="rv">Recibo Verde</option>
             </select>
@@ -709,359 +589,404 @@
           <div class="field-group">
             <label class="field-label" for="situacaoFamiliar">
               Situação familiar
-              <span class="tooltip-trigger" tabindex="0">?
-                <span class="tooltip-box">Afeta a tabela de retenção IRS. Casado 2 titulares: ambos têm rendimento.</span>
+              <span class="tip" tabindex="0">?
+                <span class="tip-box">Afeta a tabela de retenção IRS. Casado 1 titular: só um trabalha. Casado 2 titulares: ambos têm rendimento.</span>
               </span>
             </label>
             <select id="situacaoFamiliar">
               <option value="solteiro">Solteiro/a</option>
-              <option value="casado1">Casado/a — 1 titular</option>
-              <option value="casado2">Casado/a — 2 titulares</option>
+              <option value="casado1">Casado — 1 titular</option>
+              <option value="casado2">Casado — 2 titulares</option>
             </select>
           </div>
         </div>
 
-        <!-- Dependentes -->
         <div class="field-group">
           <label class="field-label" for="dependentes">
-            Número de dependentes
-            <span class="tooltip-trigger" tabindex="0">?
-              <span class="tooltip-box">Cada dependente reduz a retenção de IRS em €21,40/mês.</span>
+            Dependentes (filhos)
+            <span class="tip" tabindex="0">?
+              <span class="tip-box">Cada dependente reduz a retenção de IRS em €21,40/mês (€600/ano na liquidação final).</span>
             </span>
           </label>
-          <div class="input-wrapper">
-            <select id="dependentes" style="padding-left:16px">
-              <option value="0">0 dependentes</option>
-              <option value="1">1 dependente</option>
-              <option value="2">2 dependentes</option>
-              <option value="3">3 dependentes</option>
-              <option value="4">4 dependentes</option>
-              <option value="5">5 dependentes</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- =====================================================
-             AD 3 — MID-FORM IN-CONTENT (320×50 / responsive)
-             Posicionado dentro do formulário, entre campos —
-             utilizador está envolvido, impressão garantida.
-        ====================================================== -->
-        <div style="margin: 4px 0 20px;">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-6445553878327741"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-
-        <!-- Toggles -->
-        <div class="field-group">
-          <div class="field-label">
-            Opções adicionais
-            <span class="tooltip-trigger" tabindex="0">?
-              <span class="tooltip-box">Subsídio alimentação isento até €6/dia. Duodécimos divide sub. férias e Natal pelos 12 meses.</span>
-            </span>
-          </div>
-
-          <div class="toggle-row">
-            <div class="toggle-info">
-              <div class="toggle-label">Subsídio de alimentação</div>
-              <div class="toggle-sub">Por defeito: €6,00/dia × 22 dias</div>
-            </div>
-            <label class="switch">
-              <input type="checkbox" id="toggleAlimentacao">
-              <span class="slider"></span>
-            </label>
-          </div>
-
-          <div class="sub-field" id="alimentacaoFields">
-            <div class="sub-field-row">
-              <div>
-                <p class="sub-field-label">Valor por dia (€)</p>
-                <div class="input-wrapper">
-                  <span class="input-prefix">€</span>
-                  <input type="number" id="alimentacaoDia" value="6.00" step="0.01" min="0">
-                </div>
-              </div>
-              <div>
-                <p class="sub-field-label">Dias úteis/mês</p>
-                <div class="input-wrapper">
-                  <span class="input-prefix" style="left:10px;font-size:13px">dias</span>
-                  <input type="number" id="alimentacaoDias" value="22" step="1" min="0" style="padding-left:46px">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="toggle-row" style="margin-top:10px;">
-            <div class="toggle-info">
-              <div class="toggle-label">
-                Duodécimos
-                <span class="tooltip-trigger" tabindex="0">?
-                  <span class="tooltip-box">Subsídio de férias e de Natal dividido por 12 e pago mensalmente.</span>
-                </span>
-              </div>
-              <div class="toggle-sub">Distribuir férias e Natal pelos 12 meses</div>
-            </div>
-            <label class="switch">
-              <input type="checkbox" id="toggleDuodecimos">
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <button class="btn-primary" onclick="calcular()">Calcular Salário Líquido</button>
-        <div class="btn-row">
-          <button class="btn-secondary" onclick="partilhar()">Partilhar resultado</button>
-          <button class="btn-secondary" onclick="limpar()">Limpar</button>
+          <select id="dependentes">
+            <option value="0">0 dependentes</option>
+            <option value="1">1 dependente  (−€21,40/mês IRS)</option>
+            <option value="2">2 dependentes (−€42,80/mês IRS)</option>
+            <option value="3">3 dependentes (−€64,20/mês IRS)</option>
+            <option value="4">4 dependentes (−€85,60/mês IRS)</option>
+            <option value="5">5 dependentes (−€107,00/mês IRS)</option>
+          </select>
         </div>
       </div>
-      <!-- /form card -->
 
-      <!-- =====================================================
-           AD 4 — BETWEEN FORM & RESULTS LEADERBOARD (728×90)
-           Zona quente: utilizador acabou de interagir e está
-           à espera dos resultados — altíssimo viewability.
-      ====================================================== -->
-      <div class="ad-leader">
-        <ins class="adsbygoogle"
-             style="display:block"
+      <!-- ═══ CARD: BENEFÍCIOS FISCAIS ═══ -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-header-icon">🎯</div>
+          <span class="card-header-title">Benefícios fiscais</span>
+        </div>
+
+        <!-- IRS Jovem -->
+        <div class="toggle-row" onclick="toggleCheck('toggleIrsJovem')" id="rowIrsJovem">
+          <div class="toggle-info">
+            <div class="toggle-label">
+              IRS Jovem 2025
+              <span class="badge badge-new">Novo</span>
+              <span class="tip" tabindex="0" onclick="event.stopPropagation()">?
+                <span class="tip-box">Para quem tem menos de 35 anos. Ano 1: 100% isenção; Anos 2-4: 75%; Anos 5-7: 50%; Anos 8-10: 25%. Limite: €29.542/ano.</span>
+              </span>
+            </div>
+            <div class="toggle-sub">Isenção parcial de IRS até 10 anos</div>
+          </div>
+          <label class="switch" onclick="event.stopPropagation()">
+            <input type="checkbox" id="toggleIrsJovem" onchange="onIrsJovemChange()">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="sub-field" id="irsJovemFields">
+          <div class="sub-field-label">Ano de atividade (1º emprego ou regresso)</div>
+          <select id="irsJovemAno">
+            <option value="1">Ano 1 — 100% isenção</option>
+            <option value="2">Ano 2 — 75% isenção</option>
+            <option value="3">Ano 3 — 75% isenção</option>
+            <option value="4">Ano 4 — 75% isenção</option>
+            <option value="5">Ano 5 — 50% isenção</option>
+            <option value="6">Ano 6 — 50% isenção</option>
+            <option value="7">Ano 7 — 50% isenção</option>
+            <option value="8">Ano 8 — 25% isenção</option>
+            <option value="9">Ano 9 — 25% isenção</option>
+            <option value="10">Ano 10 — 25% isenção</option>
+          </select>
+        </div>
+
+        <!-- Deficiência -->
+        <div class="toggle-row" onclick="toggleCheck('toggleDeficiencia')">
+          <div class="toggle-info">
+            <div class="toggle-label">
+              Deficiência (≥60%)
+              <span class="tip" tabindex="0" onclick="event.stopPropagation()">?
+                <span class="tip-box">Trabalhadores com incapacidade ≥60% têm 15% do rendimento isento de IRS (máx. €2.500/ano), reduzindo a retenção na fonte.</span>
+              </span>
+            </div>
+            <div class="toggle-sub">15% do rendimento isento de IRS</div>
+          </div>
+          <label class="switch" onclick="event.stopPropagation()">
+            <input type="checkbox" id="toggleDeficiencia">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- ═══ CARD: REMUNERAÇÕES EXTRA ═══ -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-header-icon">🍽️</div>
+          <span class="card-header-title">Remunerações extra</span>
+        </div>
+
+        <!-- Subsídio alimentação -->
+        <div class="toggle-row" onclick="toggleCheck('toggleAlimentacao')" id="rowAlim">
+          <div class="toggle-info">
+            <div class="toggle-label">
+              Subsídio de alimentação
+              <span class="tip" tabindex="0" onclick="event.stopPropagation()">?
+                <span class="tip-box">Dinheiro: isento até €6,00/dia. Cartão refeição: isento até €10,20/dia. O excesso é tributado.</span>
+              </span>
+            </div>
+            <div class="toggle-sub" id="alimSubText">Dinheiro: isento até €6,00/dia</div>
+          </div>
+          <label class="switch" onclick="event.stopPropagation()">
+            <input type="checkbox" id="toggleAlimentacao" onchange="onAlimChange()">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="sub-field" id="alimentacaoFields">
+          <div class="field-group" style="margin-bottom:10px;">
+            <div class="sub-field-label">Tipo de pagamento</div>
+            <select id="tipoAlim" onchange="onTipoAlimChange()">
+              <option value="dinheiro">Dinheiro (isento até €6,00/dia)</option>
+              <option value="cartao">Cartão Refeição (isento até €10,20/dia)</option>
+            </select>
+          </div>
+          <div class="sub-field-row">
+            <div>
+              <div class="sub-field-label">Valor por dia (€)</div>
+              <div class="input-wrap">
+                <span class="input-pre">€</span>
+                <input type="number" id="alimentacaoDia" value="6.00" step="0.01" min="0">
+              </div>
+            </div>
+            <div>
+              <div class="sub-field-label">Dias úteis/mês</div>
+              <div class="input-wrap">
+                <span class="input-pre" style="left:10px;font-size:12px">dias</span>
+                <input type="number" id="alimentacaoDias" value="22" step="1" min="0" style="padding-left:44px">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duodécimos -->
+        <div class="toggle-row" id="rowDuodecimos" onclick="toggleCheck('toggleDuodecimos')">
+          <div class="toggle-info">
+            <div class="toggle-label">
+              Duodécimos
+              <span class="tip" tabindex="0" onclick="event.stopPropagation()">?
+                <span class="tip-box">Subsídio de férias e de Natal dividido por 12 e pago mensalmente. Reduz o IRS mensal por ser taxa inferior à do lump sum.</span>
+              </span>
+            </div>
+            <div class="toggle-sub">Sub. férias e Natal pagos mensalmente (÷12)</div>
+          </div>
+          <label class="switch" onclick="event.stopPropagation()">
+            <input type="checkbox" id="toggleDuodecimos">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- AD 3 — MID FORM -->
+      <div class="ad-strip">
+        <ins class="adsbygoogle" style="display:block"
              data-ad-client="ca-pub-6445553878327741"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
-      <!-- ════════════════ RESULTS ════════════════ -->
+      <!-- RECIBO VERDE EXTRA OPTIONS -->
+      <div class="card" id="cardRV" style="display:none">
+        <div class="card-header">
+          <div class="card-header-icon">🧾</div>
+          <span class="card-header-title">Recibo Verde</span>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="ativRV">
+            Tipo de atividade
+            <span class="tip" tabindex="0">?
+              <span class="tip-box">Atividades listadas no art.º 151 CIRS (médicos, advogados, arquitetos, etc.): retenção 23%. Outras atividades: 11,5%.</span>
+            </span>
+          </label>
+          <select id="ativRV">
+            <option value="listada">Atividade listada (art.º 151) — 23% IRS</option>
+            <option value="nao_listada">Outra atividade — 11,5% IRS</option>
+          </select>
+        </div>
+        <div class="field-group" style="margin-bottom:0">
+          <div class="sub-field-label" style="font-size:12px;color:var(--text-muted);line-height:1.5">
+            SS: 21,4% sobre 70% do valor dos serviços (pago trimestralmente). A calculadora mostra o equivalente mensal.
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="calcular()">Calcular salário líquido</button>
+      <div class="btn-row">
+        <button class="btn-secondary" onclick="partilhar()">Partilhar</button>
+        <button class="btn-secondary" onclick="limpar()">Limpar</button>
+      </div>
+
+      <!-- AD 4 — ENTRE FORM E RESULTADOS -->
+      <div class="ad-leader">
+        <ins class="adsbygoogle" style="display:block"
+             data-ad-client="ca-pub-6445553878327741"
+             data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- ═══ RESULTADOS ═══ -->
       <div id="results-section">
 
-        <!-- Hero result -->
-        <div class="result-hero">
-          <p class="result-hero-label">Salário líquido mensal</p>
-          <p class="result-hero-value" id="heroLiquido">—</p>
-          <p class="result-hero-sub" id="heroSub">—</p>
+        <!-- IRS Jovem callout -->
+        <div class="jovem-box" id="jovemBox">
+          <div class="jovem-box-title">⚡ IRS Jovem aplicado</div>
+          <p id="jovemBoxText"></p>
         </div>
 
-        <!-- =====================================================
-             AD 5 — AFTER HERO RECTANGLE (336×280)
-             Posição prime: imediatamente após o valor principal,
-             o utilizador olha para baixo — máxima visibilidade.
-        ====================================================== -->
+        <!-- Hero -->
+        <div class="result-hero">
+          <div class="result-hero-label">Salário líquido mensal</div>
+          <div class="result-hero-value" id="heroLiquido">—</div>
+          <div class="result-hero-sub" id="heroSub">—</div>
+          <div class="result-hero-badges" id="heroBadges"></div>
+        </div>
+
+        <!-- AD 5 — APÓS HERO -->
         <div class="ad-rect">
-          <ins class="adsbygoogle"
-               style="display:block"
+          <ins class="adsbygoogle" style="display:block"
                data-ad-client="ca-pub-6445553878327741"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+               data-ad-format="auto" data-full-width-responsive="true"></ins>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <!-- Stats grid -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <p class="stat-label">Desconto SS</p>
-            <p class="stat-value negative" id="statSS">—</p>
-            <p class="stat-sub" id="statSSPct">—</p>
+        <div class="stats-row">
+          <div class="stat-pill">
+            <div class="sp-label">Desconto SS</div>
+            <div class="sp-value neg" id="statSS">—</div>
+            <div class="sp-sub" id="statSSPct">—</div>
           </div>
-          <div class="stat-card">
-            <p class="stat-label">Retenção IRS</p>
-            <p class="stat-value negative" id="statIRS">—</p>
-            <p class="stat-sub" id="statIRSPct">—</p>
+          <div class="stat-pill">
+            <div class="sp-label">Retenção IRS</div>
+            <div class="sp-value neg" id="statIRS">—</div>
+            <div class="sp-sub" id="statIRSPct">—</div>
           </div>
-          <div class="stat-card">
-            <p class="stat-label">Custo para a empresa</p>
-            <p class="stat-value" id="statCustoEmpresa">—</p>
-            <p class="stat-sub">Bruto + SS patronal (23,75%)</p>
+          <div class="stat-pill">
+            <div class="sp-label">Custo empresa</div>
+            <div class="sp-value" id="statCustoEmpresa">—</div>
+            <div class="sp-sub" id="statCustoSub">Bruto + SS patronal</div>
           </div>
-          <div class="stat-card">
-            <p class="stat-label">Salário líquido anual</p>
-            <p class="stat-value positive" id="statAnual">—</p>
-            <p class="stat-sub" id="statAnualSub">—</p>
+          <div class="stat-pill accent">
+            <div class="sp-label">Líquido anual</div>
+            <div class="sp-value pos" id="statAnual">—</div>
+            <div class="sp-sub" id="statAnualSub">—</div>
           </div>
-          <div class="stat-card full-width" id="statAlimCard" style="display:none">
-            <p class="stat-label">Subsídio de alimentação (mensal)</p>
-            <p class="stat-value positive" id="statAlim">—</p>
-            <p class="stat-sub">Valor líquido (isento até limite legal)</p>
+          <div class="stat-pill full" id="statAlimCard" style="display:none">
+            <div class="sp-label">Subsídio de alimentação (mensal)</div>
+            <div class="sp-value pos" id="statAlim">—</div>
+            <div class="sp-sub" id="statAlimSub">—</div>
           </div>
         </div>
 
-        <!-- =====================================================
-             AD 6 — BETWEEN STATS & VISUAL BAR (728×90)
-             Separador natural entre secções — scroll pause point.
-        ====================================================== -->
+        <!-- AD 6 — ENTRE STATS E BARRA -->
         <div class="ad-leader">
-          <ins class="adsbygoogle"
-               style="display:block"
+          <ins class="adsbygoogle" style="display:block"
                data-ad-client="ca-pub-6445553878327741"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+               data-ad-format="auto" data-full-width-responsive="true"></ins>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- Visual bar -->
-        <div class="card" style="padding:20px 24px;">
-          <p class="visual-bar-title">Distribuição do salário bruto</p>
-          <div class="visual-bar">
-            <div class="bar-segment bar-liquido" id="barLiquido" style="width:0%"></div>
-            <div class="bar-segment bar-irs" id="barIRS" style="width:0%"></div>
-            <div class="bar-segment bar-ss" id="barSS" style="width:0%"></div>
-          </div>
-          <div class="bar-legend">
-            <div class="bar-legend-item">
-              <div class="legend-dot" style="background:var(--green-accent)"></div>
-              <span id="legendLiquido">Líquido —</span>
+        <!-- Barra visual -->
+        <div class="card" style="padding:18px 20px;">
+          <div class="bar-wrap">
+            <div class="bar-title">Distribuição do salário bruto</div>
+            <div class="visual-bar">
+              <div class="bar-seg bar-liq" id="barLiq" style="width:0%"></div>
+              <div class="bar-seg bar-irs" id="barIRS" style="width:0%"></div>
+              <div class="bar-seg bar-ss"  id="barSS"  style="width:0%"></div>
             </div>
-            <div class="bar-legend-item">
-              <div class="legend-dot" style="background:#f87171"></div>
-              <span id="legendIRS">IRS —</span>
-            </div>
-            <div class="bar-legend-item">
-              <div class="legend-dot" style="background:#fbbf24"></div>
-              <span id="legendSS">SS —</span>
+            <div class="bar-legend">
+              <div class="legend-item"><div class="legend-dot" style="background:var(--green-accent)"></div><span id="legLiq">Líquido</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div><span id="legIRS">IRS</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div><span id="legSS">SS</span></div>
             </div>
           </div>
         </div>
 
-        <!-- =====================================================
-             AD 7 — BEFORE BREAKDOWN RECTANGLE (300×250)
-             Antes da tabela de detalhes — utilizador quer
-             continuar a ler, permanece na página.
-        ====================================================== -->
+        <!-- AD 7 — ANTES TABELA -->
         <div class="ad-rect">
-          <ins class="adsbygoogle"
-               style="display:block"
+          <ins class="adsbygoogle" style="display:block"
                data-ad-client="ca-pub-6445553878327741"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+               data-ad-format="auto" data-full-width-responsive="true"></ins>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- Breakdown table -->
+        <!-- Breakdown -->
         <div class="card">
-          <p class="card-title">Detalhes do Cálculo</p>
+          <div class="card-header">
+            <div class="card-header-icon">📋</div>
+            <span class="card-header-title">Detalhe do cálculo</span>
+          </div>
           <table class="breakdown-table">
             <tbody id="breakdownBody"></tbody>
           </table>
-          <div class="warning-banner">
-            <span class="icon">⚠️</span>
-            <span>Valores estimativos com base nas tabelas de retenção IRS 2025. Consulte um contabilista para situações específicas.</span>
+          <div class="disclaimer">
+            ⚠️ Valores estimativos com base nas tabelas de retenção IRS 2025 (AT). Consulte um contabilista para situações específicas.
           </div>
         </div>
 
-        <!-- =====================================================
-             AD 8 — AFTER BREAKDOWN RECTANGLE (300×250)
-             Fim do conteúdo — utilizador viu tudo, boa
-             disposição para clicar num anúncio relevante.
-        ====================================================== -->
+        <!-- AD 8 — APÓS TABELA -->
         <div class="ad-rect">
-          <ins class="adsbygoogle"
-               style="display:block"
+          <ins class="adsbygoogle" style="display:block"
                data-ad-client="ca-pub-6445553878327741"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+               data-ad-format="auto" data-full-width-responsive="true"></ins>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-      </div>
-      <!-- /results-section -->
+      </div><!-- /results-section -->
 
     </div><!-- /container -->
   </main>
 
-  <!-- =====================================================
-       AD 9 — PRE-FOOTER LEADERBOARD (728×90)
-       Última impressão antes do utilizador sair.
-  ====================================================== -->
-  <div style="text-align:center;margin:20px 0 0;padding:0 16px;">
-    <ins class="adsbygoogle"
-         style="display:block"
+  <!-- AD 9 — PRÉ-FOOTER -->
+  <div style="text-align:center;padding:0 16px 4px;">
+    <ins class="adsbygoogle" style="display:block"
          data-ad-client="ca-pub-6445553878327741"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+         data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>Valores estimados com base nas tabelas IRS 2025 — Autoridade Tributária e Aduaneira</p>
-      <p style="margin-top:6px;">© 2025 SalárioNet · Para uso informativo</p>
+      <p>Tabelas IRS 2025 — Autoridade Tributária e Aduaneira · Despacho nº 236-A/2025</p>
+      <p style="margin-top:4px;">© 2025 SalárioNet · Apenas para uso informativo</p>
     </div>
   </footer>
 
-  <!-- =====================================================
-       AD 10 — STICKY BOTTOM BANNER (320×50, mobile only)
-       Sempre visível no telemóvel. Botão X para fechar.
-  ====================================================== -->
+  <!-- AD 10 — STICKY BOTTOM MOBILE -->
   <div id="ad-sticky-bottom">
-    <button class="close-btn" onclick="document.getElementById('ad-sticky-bottom').style.display='none'" aria-label="Fechar anúncio">×</button>
-    <ins class="adsbygoogle"
-         style="display:block"
+    <button class="close-btn" onclick="document.getElementById('ad-sticky-bottom').style.display='none'" aria-label="Fechar">×</button>
+    <ins class="adsbygoogle" style="display:block"
          data-ad-client="ca-pub-6445553878327741"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+         data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
-  <!-- =====================================================
-       JAVASCRIPT
-  ====================================================== -->
   <script>
     'use strict';
 
-    // ── THEME ──────────────────────────────────────────
+    // ── THEME ──────────────────────────────────────────────────
     const body = document.body;
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon   = document.getElementById('themeIcon');
-    const themeLabel  = document.getElementById('themeLabel');
-
-    themeToggle.addEventListener('click', () => {
+    document.getElementById('themeToggle').addEventListener('click', () => {
       const isDark = body.getAttribute('data-theme') === 'dark';
-      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      themeIcon.textContent  = isDark ? '🌙' : '☀️';
-      themeLabel.textContent = isDark ? 'Escuro' : 'Claro';
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      const next = isDark ? 'light' : 'dark';
+      body.setAttribute('data-theme', next);
+      document.getElementById('themeIcon').textContent  = isDark ? '🌙' : '☀️';
+      document.getElementById('themeLabel').textContent = isDark ? 'Escuro' : 'Claro';
+      localStorage.setItem('theme', next);
     });
-
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
     if (savedTheme === 'light') {
-      themeIcon.textContent  = '🌙';
-      themeLabel.textContent = 'Escuro';
+      document.getElementById('themeIcon').textContent  = '🌙';
+      document.getElementById('themeLabel').textContent = 'Escuro';
     }
 
-    // ── TOGGLE SWITCH ──────────────────────────────────
-    const toggleAlimentacao  = document.getElementById('toggleAlimentacao');
-    const alimentacaoFields  = document.getElementById('alimentacaoFields');
-    toggleAlimentacao.addEventListener('change', () => {
-      alimentacaoFields.classList.toggle('visible', toggleAlimentacao.checked);
-    });
-
-    // ── URL PARAMS → AUTO-FILL ─────────────────────────
-    function fillFromUrl() {
-      const p = new URLSearchParams(window.location.search);
-      if (p.has('bruto'))    document.getElementById('brutoPay').value        = p.get('bruto');
-      if (p.has('tipo'))     document.getElementById('tipoContrato').value    = p.get('tipo');
-      if (p.has('sit'))      document.getElementById('situacaoFamiliar').value = p.get('sit');
-      if (p.has('dep'))      document.getElementById('dependentes').value     = p.get('dep');
-      if (p.has('alim')) {
-        const on = p.get('alim') === '1';
-        toggleAlimentacao.checked = on;
-        alimentacaoFields.classList.toggle('visible', on);
-      }
-      if (p.has('alimDia'))  document.getElementById('alimentacaoDia').value  = p.get('alimDia');
-      if (p.has('alimDias')) document.getElementById('alimentacaoDias').value = p.get('alimDias');
-      if (p.has('duo'))      document.getElementById('toggleDuodecimos').checked = p.get('duo') === '1';
-      if (p.has('bruto'))    setTimeout(calcular, 200);
+    // ── UI HELPERS ─────────────────────────────────────────────
+    function toggleCheck(id) {
+      const el = document.getElementById(id);
+      el.checked = !el.checked;
+      el.dispatchEvent(new Event('change'));
     }
 
-    // ── IRS TABLE 2025 ─────────────────────────────────
-    // [limite, taxa, parcela_abater]
-    const ESCALOES = [
+    function onTipoChange() {
+      const rv = document.getElementById('tipoContrato').value === 'rv';
+      document.getElementById('cardRV').style.display         = rv ? '' : 'none';
+      document.getElementById('rowDuodecimos').style.display  = rv ? 'none' : '';
+      document.getElementById('rowIrsJovem').style.display    = rv ? 'none' : '';
+      document.getElementById('situacaoFamiliar').closest('.field-group').style.display = rv ? 'none' : '';
+    }
+
+    function onIrsJovemChange() {
+      const on = document.getElementById('toggleIrsJovem').checked;
+      document.getElementById('irsJovemFields').classList.toggle('open', on);
+    }
+
+    function onAlimChange() {
+      const on = document.getElementById('toggleAlimentacao').checked;
+      document.getElementById('alimentacaoFields').classList.toggle('open', on);
+    }
+
+    function onTipoAlimChange() {
+      const cartao = document.getElementById('tipoAlim').value === 'cartao';
+      document.getElementById('alimSubText').textContent = cartao
+        ? 'Cartão refeição: isento até €10,20/dia'
+        : 'Dinheiro: isento até €6,00/dia';
+      document.getElementById('alimentacaoDia').value = cartao ? '10.20' : '6.00';
+    }
+
+    // ── IRS TABLES 2025 (Despacho 236-A/2025) ──────────────────
+    // [limite_superior, taxa, parcela_abater]
+    const ESCALOES_SOLTEIRO = [
       [792,      0,      0],
       [1007,     0.13,   0],
       [1739,     0.185,  55.39],
@@ -1072,17 +997,38 @@
       [Infinity, 0.40,   636.75],
     ];
 
-    function calcularIRS(bruto, situacao, dependentes) {
-      let base = situacao === 'casado1' ? bruto / 2 : bruto;
+    function calcularIRS(bruto, situacao, dependentes, irsJovemFator, deficiencia) {
+      let base = bruto;
+
+      // Deficiência: 15% isento (máx €2500/ano = ~€208/mês)
+      if (deficiencia) {
+        const isencao = Math.min(bruto * 0.15, 208.33);
+        base = bruto - isencao;
+      }
+
+      // IRS Jovem: reduzir base tributável
+      if (irsJovemFator > 0) {
+        base = base * (1 - irsJovemFator);
+      }
+
+      let calcBase = situacao === 'casado1' ? base / 2 : base;
       let irs = 0;
-      for (const [lim, taxa, parcela] of ESCALOES) {
-        if (base <= lim) { irs = base * taxa - parcela; break; }
+      for (const [lim, taxa, parcela] of ESCALOES_SOLTEIRO) {
+        if (calcBase <= lim) { irs = calcBase * taxa - parcela; break; }
       }
       if (situacao === 'casado1') irs *= 2;
-      return Math.max(0, irs - dependentes * 21.40);
+      irs = Math.max(0, irs - dependentes * 21.40);
+      return irs;
     }
 
-    // ── MAIN CALC ──────────────────────────────────────
+    function getIrsJovemFator(ano) {
+      if (ano <= 1) return 1.00;
+      if (ano <= 4) return 0.75;
+      if (ano <= 7) return 0.50;
+      return 0.25;
+    }
+
+    // ── MAIN CALC ──────────────────────────────────────────────
     function calcular() {
       const bruto = parseFloat(document.getElementById('brutoPay').value);
       if (!bruto || bruto <= 0) {
@@ -1091,117 +1037,189 @@
         return;
       }
 
-      const tipo         = document.getElementById('tipoContrato').value;
-      const situacao     = document.getElementById('situacaoFamiliar').value;
-      const dependentes  = parseInt(document.getElementById('dependentes').value);
-      const comAlim      = document.getElementById('toggleAlimentacao').checked;
-      const alimDia      = parseFloat(document.getElementById('alimentacaoDia').value)  || 6.00;
-      const alimDias     = parseInt(document.getElementById('alimentacaoDias').value)   || 22;
-      const duodecimos   = document.getElementById('toggleDuodecimos').checked;
+      const tipo        = document.getElementById('tipoContrato').value;
+      const situacao    = document.getElementById('situacaoFamiliar').value;
+      const dependentes = parseInt(document.getElementById('dependentes').value);
+      const irsJovem    = document.getElementById('toggleIrsJovem').checked && tipo === 'coe';
+      const jovemAno    = parseInt(document.getElementById('irsJovemAno').value);
+      const deficiencia = document.getElementById('toggleDeficiencia').checked;
+      const comAlim     = document.getElementById('toggleAlimentacao').checked;
+      const tipoAlim    = document.getElementById('tipoAlim').value;
+      const alimDia     = parseFloat(document.getElementById('alimentacaoDia').value) || 6.00;
+      const alimDias    = parseInt(document.getElementById('alimentacaoDias').value)  || 22;
+      const duodecimos  = document.getElementById('toggleDuodecimos').checked && tipo === 'coe';
+      const ativRV      = document.getElementById('ativRV').value;
 
-      let ss, irs, ssPatronal, descSS, descIRS;
+      const LIMITE_ALIM = tipoAlim === 'cartao' ? 10.20 : 6.00;
+      const alimIsento  = comAlim ? Math.min(alimDia, LIMITE_ALIM) * alimDias : 0;
+      const alimTributavel = comAlim ? Math.max(0, alimDia - LIMITE_ALIM) * alimDias : 0;
+      const alimTotal   = comAlim ? alimDia * alimDias : 0;
+
+      const jovemFator  = irsJovem ? getIrsJovemFator(jovemAno) : 0;
+
+      let ss, irs, ssPatronal, labelSS, labelIRS;
 
       if (tipo === 'coe') {
         ss         = bruto * 0.11;
-        irs        = calcularIRS(bruto, situacao, dependentes);
+        irs        = calcularIRS(bruto, situacao, dependentes, jovemFator, deficiencia);
         ssPatronal = bruto * 0.2375;
-        descSS     = '11%';
-        descIRS    = 'Tabela AT 2025';
+        labelSS    = '11% SS';
+        labelIRS   = 'Tabela AT 2025';
       } else {
-        ss         = bruto * 0.214;
-        irs        = bruto * 0.25;
+        const taxaIRS = ativRV === 'listada' ? 0.23 : 0.115;
+        ss         = bruto * 0.70 * 0.214;
+        irs        = bruto * taxaIRS;
         ssPatronal = 0;
-        descSS     = '21,4% (coef. 0,70)';
-        descIRS    = '25% (taxa geral lib.)';
+        labelSS    = '21,4% × 70%';
+        labelIRS   = ativRV === 'listada' ? '23% (art.151)' : '11,5%';
+      }
+
+      // IRS sobre parte tributável do sub. alimentação
+      let irsTributavelAlim = 0;
+      if (alimTributavel > 0 && tipo === 'coe') {
+        irsTributavelAlim = calcularIRS(bruto + alimTributavel, situacao, dependentes, jovemFator, deficiencia) - irs;
+        irsTributavelAlim = Math.max(0, irsTributavelAlim);
       }
 
       let liquido = bruto - ss - irs;
 
-      // Duodécimos
-      if (duodecimos && tipo === 'coe') {
-        const extra = (bruto / 12) * 2;
-        liquido += extra - extra * 0.11 - calcularIRS(extra, situacao, 0);
+      // Duodécimos: 2 meses extra ÷ 12, com SS e IRS proporcionais
+      let duoLiquido = 0;
+      if (duodecimos) {
+        const duoBruto = (bruto / 12) * 2;
+        const duoSS    = duoBruto * 0.11;
+        const duoIRS   = calcularIRS(duoBruto, situacao, 0, jovemFator, false);
+        duoLiquido = duoBruto - duoSS - duoIRS;
+        liquido += duoLiquido;
       }
 
-      const alimMensal   = comAlim ? alimDia * alimDias : 0;
-      const totalLiquido = liquido + alimMensal;
+      const totalLiquido = liquido + alimIsento - irsTributavelAlim;
       const custoEmpresa = bruto + ssPatronal;
       const pctDescontos = ((ss + irs) / bruto) * 100;
 
-      let liquidoAnual = tipo === 'rv'
-        ? liquido * 12
-        : duodecimos ? liquido * 12 : liquido * 14;
-      if (comAlim) liquidoAnual += alimMensal * 11;
+      let liquidoAnual;
+      if (tipo === 'rv') {
+        liquidoAnual = liquido * 12;
+      } else if (duodecimos) {
+        liquidoAnual = liquido * 12;
+      } else {
+        liquidoAnual = liquido * 14;
+      }
+      if (comAlim) liquidoAnual += alimIsento * 11;
 
-      // ── RENDER ───────────────────────────────────────
+      // ── RENDER ────────────────────────────────────────────
       const fmt    = v => v.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const fmtPct = v => v.toFixed(1) + '%';
 
       document.getElementById('heroLiquido').textContent = '€' + fmt(totalLiquido);
       document.getElementById('heroSub').textContent =
-        `${fmtPct(pctDescontos)} de descontos · ${tipo === 'coe' && !duodecimos ? '14' : '12'} meses`;
+        fmtPct(pctDescontos) + ' de descontos · ' +
+        (tipo === 'coe' && !duodecimos ? '14' : '12') + ' meses base';
 
-      document.getElementById('statSS').textContent          = '-€' + fmt(ss);
-      document.getElementById('statSSPct').textContent       = descSS + ' do bruto';
-      document.getElementById('statIRS').textContent         = '-€' + fmt(irs);
-      document.getElementById('statIRSPct').textContent      = descIRS;
-      document.getElementById('statCustoEmpresa').textContent = '€' + fmt(custoEmpresa);
-      document.getElementById('statAnual').textContent       = '€' + fmt(liquidoAnual);
-      document.getElementById('statAnualSub').textContent    = tipo === 'rv'
-        ? '12 meses (sem subsídios)' : duodecimos ? '12 meses (com duodécimos)' : '14 meses (férias + Natal)';
+      // Hero badges
+      const badges = [];
+      if (irsJovem) badges.push('IRS Jovem ' + fmtPct(jovemFator * 100) + ' isenção');
+      if (deficiencia) badges.push('Deficiência: 15% isento');
+      if (duodecimos) badges.push('Duodécimos');
+      const badgesEl = document.getElementById('heroBadges');
+      badgesEl.innerHTML = badges.map(b => `<span class="hero-badge">${b}</span>`).join('');
+
+      // IRS Jovem callout
+      const jovemBox = document.getElementById('jovemBox');
+      if (irsJovem) {
+        jovemBox.classList.add('show');
+        const poupanca = calcularIRS(bruto, situacao, dependentes, 0, deficiencia) - irs;
+        document.getElementById('jovemBoxText').innerHTML =
+          `<strong>Poupas €${fmt(poupanca)}/mês</strong> em IRS graças ao IRS Jovem ` +
+          `(ano ${jovemAno}, ${fmtPct(jovemFator * 100)} de isenção). ` +
+          `Ao longo de 10 anos podes poupar até <strong>€${fmt(poupanca * 120)}</strong>.`;
+      } else {
+        jovemBox.classList.remove('show');
+      }
+
+      document.getElementById('statSS').textContent      = '-€' + fmt(ss);
+      document.getElementById('statSSPct').textContent   = labelSS + ' do bruto';
+      document.getElementById('statIRS').textContent     = '-€' + fmt(irs);
+      document.getElementById('statIRSPct').textContent  = labelIRS;
+      document.getElementById('statCustoEmpresa').textContent = tipo === 'coe' ? '€' + fmt(custoEmpresa) : 'N/A';
+      document.getElementById('statCustoSub').textContent = tipo === 'coe' ? 'Bruto + SS patronal (23,75%)' : 'Não aplicável';
+      document.getElementById('statAnual').textContent   = '€' + fmt(liquidoAnual);
+      document.getElementById('statAnualSub').textContent = tipo === 'rv'
+        ? '12 meses (sem subsídios)'
+        : duodecimos ? '12 meses (com duodécimos)' : '14 meses (férias + Natal)';
 
       const alimCard = document.getElementById('statAlimCard');
       if (comAlim) {
         alimCard.style.display = '';
-        document.getElementById('statAlim').textContent = '€' + fmt(alimMensal);
+        document.getElementById('statAlim').textContent  = '€' + fmt(alimIsento);
+        document.getElementById('statAlimSub').textContent =
+          tipoAlim === 'cartao'
+            ? 'Cartão refeição (isento até €10,20/dia)'
+            : 'Dinheiro (isento até €6,00/dia)';
       } else {
         alimCard.style.display = 'none';
       }
 
+      // Barra visual
       const pctLiq = (liquido / bruto) * 100;
       const pctIRS = (irs    / bruto) * 100;
       const pctSS  = (ss     / bruto) * 100;
-      document.getElementById('barLiquido').style.width = pctLiq + '%';
-      document.getElementById('barIRS').style.width     = pctIRS + '%';
-      document.getElementById('barSS').style.width      = pctSS  + '%';
-      document.getElementById('legendLiquido').textContent = 'Líquido ' + fmtPct(pctLiq);
-      document.getElementById('legendIRS').textContent     = 'IRS '     + fmtPct(pctIRS);
-      document.getElementById('legendSS').textContent      = 'SS '      + fmtPct(pctSS);
+      document.getElementById('barLiq').style.width = pctLiq + '%';
+      document.getElementById('barIRS').style.width = pctIRS + '%';
+      document.getElementById('barSS').style.width  = pctSS  + '%';
+      document.getElementById('legLiq').textContent = 'Líquido ' + fmtPct(pctLiq);
+      document.getElementById('legIRS').textContent = 'IRS '     + fmtPct(pctIRS);
+      document.getElementById('legSS').textContent  = 'SS '      + fmtPct(pctSS);
 
       // Breakdown
       const rows = [
-        ['Salário bruto', '€' + fmt(bruto)],
-        ['Segurança Social (' + descSS + ')', '-€' + fmt(ss), 'deduction'],
-        ['Retenção IRS (' + descIRS + ')',    '-€' + fmt(irs), 'deduction'],
+        { label: 'Salário bruto', val: '€' + fmt(bruto) },
+        { label: 'Segurança Social (' + labelSS + ')', val: '-€' + fmt(ss), cls: 'neg' },
       ];
-      if (dependentes > 0 && tipo === 'coe')
-        rows.push(['  Redução por dependentes (' + dependentes + '×€21,40)', '-€' + fmt(dependentes * 21.40)]);
-      if (duodecimos && tipo === 'coe') {
-        const extra = (bruto / 12) * 2;
-        rows.push(['Duodécimos (÷12 × 2 meses)', '+€' + fmt(extra - extra * 0.11)]);
+
+      if (deficiencia && tipo === 'coe') {
+        const isencao = Math.min(bruto * 0.15, 208.33);
+        rows.push({ label: '  → Isenção deficiência (15%, máx €208/mês)', val: '-€' + fmt(isencao), cls: 'pos', sub: true });
       }
-      if (comAlim)
-        rows.push(['Subsídio de alimentação', '+€' + fmt(alimMensal)]);
+      if (irsJovem && tipo === 'coe') {
+        const isencaoJovem = bruto * jovemFator;
+        rows.push({ label: '  → IRS Jovem (' + fmtPct(jovemFator * 100) + ' isento)', val: '-€' + fmt(isencaoJovem), cls: 'pos', sub: true });
+      }
+
+      rows.push({ label: 'Retenção IRS (' + labelIRS + ')', val: '-€' + fmt(irs), cls: 'neg' });
+
+      if (dependentes > 0 && tipo === 'coe')
+        rows.push({ label: '  → Redução p/ dependentes (' + dependentes + '×€21,40)', val: '-€' + fmt(dependentes * 21.40), cls: 'pos', sub: true });
+
+      if (duodecimos) {
+        rows.push({ label: 'Duodécimos (sub. férias + Natal ÷ 12)', val: '+€' + fmt(duoLiquido), cls: 'pos' });
+      }
+      if (comAlim) {
+        rows.push({ label: 'Sub. alimentação (isento)', val: '+€' + fmt(alimIsento), cls: 'pos' });
+        if (alimTributavel > 0)
+          rows.push({ label: '  → Excesso tributável (IRS adicional)', val: '-€' + fmt(irsTributavelAlim), cls: 'neg', sub: true });
+      }
 
       const tbody = document.getElementById('breakdownBody');
       tbody.innerHTML = '';
-      rows.forEach(([label, val, cls]) => {
+      rows.forEach(r => {
         const tr = tbody.insertRow();
-        const td1 = tr.insertCell(); td1.textContent = label;
-        const td2 = tr.insertCell(); td2.textContent = val;
-        if (cls) td2.classList.add(cls);
+        if (r.sub) tr.classList.add('row-sub');
+        const td1 = tr.insertCell(); td1.textContent = r.label;
+        const td2 = tr.insertCell(); td2.textContent = r.val;
+        if (r.cls) td2.classList.add(r.cls);
       });
 
-      const trT = tbody.insertRow(); trT.classList.add('total-row');
+      const trT = tbody.insertRow(); trT.classList.add('row-total');
       trT.insertCell().textContent = 'Salário líquido mensal';
       trT.insertCell().textContent = '€' + fmt(totalLiquido);
 
       if (tipo === 'coe') {
-        const trE = tbody.insertRow(); trE.classList.add('total-row');
+        const trE = tbody.insertRow(); trE.classList.add('row-total');
         const c1 = trE.insertCell(); c1.textContent = 'Custo total empresa';
         const c2 = trE.insertCell(); c2.textContent = '€' + fmt(custoEmpresa);
-        c1.style.color = 'var(--text-secondary)';
-        c2.style.color = 'var(--text-secondary)';
+        c1.style.color = 'var(--text-secondary)'; c2.style.color = 'var(--text-secondary)';
+        c1.style.fontSize = '13px'; c2.style.fontSize = '13px';
       }
 
       const sec = document.getElementById('results-section');
@@ -1209,7 +1227,7 @@
       setTimeout(() => sec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
     }
 
-    // ── SHARE ──────────────────────────────────────────
+    // ── SHARE ──────────────────────────────────────────────────
     function partilhar() {
       const bruto = document.getElementById('brutoPay').value;
       if (!bruto) { showToast('Calcula primeiro o salário'); return; }
@@ -1218,10 +1236,15 @@
         tipo:     document.getElementById('tipoContrato').value,
         sit:      document.getElementById('situacaoFamiliar').value,
         dep:      document.getElementById('dependentes').value,
-        alim:     toggleAlimentacao.checked ? '1' : '0',
+        jovem:    document.getElementById('toggleIrsJovem').checked ? '1' : '0',
+        jovemAno: document.getElementById('irsJovemAno').value,
+        def:      document.getElementById('toggleDeficiencia').checked ? '1' : '0',
+        alim:     document.getElementById('toggleAlimentacao').checked ? '1' : '0',
+        tipoAlim: document.getElementById('tipoAlim').value,
         alimDia:  document.getElementById('alimentacaoDia').value,
         alimDias: document.getElementById('alimentacaoDias').value,
         duo:      document.getElementById('toggleDuodecimos').checked ? '1' : '0',
+        ativRV:   document.getElementById('ativRV').value,
       });
       const url = location.origin + location.pathname + '?' + p.toString();
       navigator.clipboard.writeText(url)
@@ -1233,23 +1256,33 @@
         });
     }
 
-    // ── CLEAR ──────────────────────────────────────────
+    // ── CLEAR ──────────────────────────────────────────────────
     function limpar() {
-      ['brutoPay'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('tipoContrato').value      = 'coe';
-      document.getElementById('situacaoFamiliar').value  = 'solteiro';
-      document.getElementById('dependentes').value       = '0';
-      toggleAlimentacao.checked = false;
-      alimentacaoFields.classList.remove('visible');
-      document.getElementById('alimentacaoDia').value    = '6.00';
-      document.getElementById('alimentacaoDias').value   = '22';
+      document.getElementById('brutoPay').value = '';
+      document.getElementById('tipoContrato').value     = 'coe';
+      document.getElementById('situacaoFamiliar').value = 'solteiro';
+      document.getElementById('dependentes').value      = '0';
+      document.getElementById('toggleIrsJovem').checked    = false;
+      document.getElementById('irsJovemFields').classList.remove('open');
+      document.getElementById('toggleDeficiencia').checked = false;
+      document.getElementById('toggleAlimentacao').checked = false;
+      document.getElementById('alimentacaoFields').classList.remove('open');
+      document.getElementById('alimentacaoDia').value   = '6.00';
+      document.getElementById('alimentacaoDias').value  = '22';
+      document.getElementById('tipoAlim').value         = 'dinheiro';
+      document.getElementById('alimSubText').textContent = 'Dinheiro: isento até €6,00/dia';
       document.getElementById('toggleDuodecimos').checked = false;
+      document.getElementById('ativRV').value           = 'listada';
+      document.getElementById('cardRV').style.display   = 'none';
+      document.getElementById('rowDuodecimos').style.display = '';
+      document.getElementById('rowIrsJovem').style.display   = '';
       document.getElementById('results-section').classList.remove('visible');
+      document.getElementById('jovemBox').classList.remove('show');
       history.replaceState(null, '', location.pathname);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ── TOAST ──────────────────────────────────────────
+    // ── TOAST ──────────────────────────────────────────────────
     function showToast(msg) {
       const t = document.getElementById('toast');
       t.textContent = msg;
@@ -1257,12 +1290,37 @@
       setTimeout(() => t.classList.remove('show'), 2800);
     }
 
-    // ── ENTER KEY ──────────────────────────────────────
+    // ── URL AUTO-FILL ──────────────────────────────────────────
+    function fillFromUrl() {
+      const p = new URLSearchParams(window.location.search);
+      if (!p.has('bruto')) return;
+      document.getElementById('brutoPay').value             = p.get('bruto');
+      if (p.has('tipo'))     { document.getElementById('tipoContrato').value = p.get('tipo'); onTipoChange(); }
+      if (p.has('sit'))      document.getElementById('situacaoFamiliar').value = p.get('sit');
+      if (p.has('dep'))      document.getElementById('dependentes').value      = p.get('dep');
+      if (p.has('jovem') && p.get('jovem') === '1') {
+        document.getElementById('toggleIrsJovem').checked = true;
+        document.getElementById('irsJovemFields').classList.add('open');
+      }
+      if (p.has('jovemAno')) document.getElementById('irsJovemAno').value = p.get('jovemAno');
+      if (p.has('def') && p.get('def') === '1') document.getElementById('toggleDeficiencia').checked = true;
+      if (p.has('alim') && p.get('alim') === '1') {
+        document.getElementById('toggleAlimentacao').checked = true;
+        document.getElementById('alimentacaoFields').classList.add('open');
+      }
+      if (p.has('tipoAlim')) { document.getElementById('tipoAlim').value = p.get('tipoAlim'); onTipoAlimChange(); }
+      if (p.has('alimDia'))  document.getElementById('alimentacaoDia').value  = p.get('alimDia');
+      if (p.has('alimDias')) document.getElementById('alimentacaoDias').value = p.get('alimDias');
+      if (p.has('duo') && p.get('duo') === '1') document.getElementById('toggleDuodecimos').checked = true;
+      if (p.has('ativRV'))   document.getElementById('ativRV').value = p.get('ativRV');
+      setTimeout(calcular, 200);
+    }
+
+    // ── ENTER KEY ──────────────────────────────────────────────
     document.getElementById('brutoPay').addEventListener('keydown', e => {
       if (e.key === 'Enter') calcular();
     });
 
-    // ── INIT ───────────────────────────────────────────
     fillFromUrl();
   </script>
 
