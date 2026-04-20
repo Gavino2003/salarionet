@@ -4,16 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora Salário Líquido 2026 Portugal | SalárioNet</title>
-  <meta name="description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social para trabalho por conta de outrem e recibos verdes.">
-  <meta name="keywords" content="calculadora salário líquido, IRS 2025, segurança social, recibo verde, salário Portugal, desconto IRS, salário bruto líquido, tabelas IRS 2025, retenção na fonte, IRS jovem">
+  <meta name="description" content="Calculadora de salário líquido Portugal 2026. Simula IRS, Segurança Social, IRS Jovem e Recibo Verde com as tabelas AT atualizadas. Resultado instantâneo.">
+  <meta name="keywords" content="calculadora salário líquido 2026, IRS 2026, segurança social, recibo verde, salário líquido Portugal, desconto IRS, salário bruto líquido, tabelas IRS 2026, retenção na fonte, IRS jovem 2026">
   <meta name="author" content="SalárioNet">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://salarionet.vercel.app/">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Calculadora Salário Líquido 2026 Portugal | SalárioNet">
-  <meta property="og:description" content="Calcula o teu salário líquido em Portugal para 2025. Simula descontos de IRS e Segurança Social.">
+  <meta property="og:description" content="Calcula o teu salário líquido em Portugal para 2026. IRS, Segurança Social, IRS Jovem, Recibo Verde — tabelas AT atualizadas.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_PT">
+  <meta property="og:site_name" content="SalárioNet">
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Calculadora Salário Líquido 2026 Portugal | SalárioNet">
-  <meta name="twitter:description" content="Calcula o teu salário líquido em Portugal para 2025.">
+  <meta name="twitter:description" content="Calcula o teu salário líquido em Portugal para 2026 — IRS, SS, IRS Jovem, Recibo Verde.">
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SalárioNet — Calculadora Salário Líquido Portugal 2026",
+    "description": "Calculadora de salário líquido para Portugal 2026. Calcula IRS, Segurança Social, IRS Jovem, Recibo Verde com tabelas AT atualizadas.",
+    "url": "https://salarionet.vercel.app",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "pt-PT",
+    "audience": { "@type": "Audience", "geographicArea": { "@type": "Country", "name": "Portugal" } }
+  }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6445553878327741" crossorigin="anonymous"></script>
   <!-- Google Fonts -->
@@ -53,6 +76,13 @@
 
       --rail-w:        160px;
       --rail-gap:      16px;
+
+      /* Espaçamento consistente */
+      --space-xs:  4px;
+      --space-sm:  8px;
+      --space-md:  16px;
+      --space-lg:  24px;
+      --space-xl:  32px;
     }
 
     [data-theme="light"] {
@@ -78,7 +108,7 @@
       min-height: 100vh;
       transition: background-color 0.3s, color 0.3s;
       line-height: 1.6;
-      padding-bottom: 80px;
+      padding-bottom: 76px; /* altura action bar */
     }
 
     .container {
@@ -88,16 +118,29 @@
     }
 
     /* ── AD ZONES ── */
+    /* Anúncios sem espaço quando vazios (antes da aprovação AdSense) */
     #ad-sticky-top {
       position: sticky; top: 0; z-index: 200;
       background: var(--bg-secondary);
       border-bottom: 1px solid var(--border);
-      padding: 4px 0; text-align: center;
+      text-align: center;
       transition: background-color 0.3s;
+      min-height: 0;
     }
-    .ad-strip  { margin: 0 0 16px; text-align: center; }
-    .ad-rect   { margin: 16px 0;   text-align: center; }
-    .ad-leader { margin: 16px 0;   text-align: center; }
+    #ad-sticky-top ins[data-ad-status="unfilled"],
+    #ad-sticky-top ins:empty { display: none !important; }
+    #ad-sticky-top:has(ins[data-ad-status="filled"]) { padding: 4px 0; border-bottom: 1px solid var(--border); }
+
+    .ad-wrap {
+      text-align: center; overflow: hidden;
+      /* colapsa quando vazio */
+      min-height: 0;
+    }
+    .ad-wrap:empty { display: none; }
+    .ad-wrap ins[data-ad-status="unfilled"] { display: none !important; }
+    .ad-strip  { margin: 0 0 var(--space-md); }
+    .ad-rect   { margin: var(--space-md) 0; }
+    .ad-leader { margin: var(--space-md) 0; }
     .rail {
       display: none; position: fixed;
       top: 50%; transform: translateY(-50%);
@@ -112,17 +155,20 @@
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
       background: var(--bg-secondary);
       border-top: 1px solid var(--border);
-      padding: 10px 16px;
-      display: flex; gap: 8px; align-items: center;
+      padding: var(--space-sm) var(--space-md);
+      padding-bottom: max(var(--space-sm), env(safe-area-inset-bottom));
+      display: flex; gap: var(--space-sm); align-items: center;
       transition: background-color 0.3s;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.25);
     }
     #action-bar .ab-calc {
-      flex: 1; padding: 13px;
+      flex: 1; padding: 14px var(--space-sm);
       background: linear-gradient(135deg, var(--green-mid), var(--green-light));
       color: #fff; border: none; border-radius: var(--radius-md);
       font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif;
       cursor: pointer; transition: all var(--transition);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      min-width: 0;
     }
     #action-bar .ab-calc:hover {
       background: linear-gradient(135deg, var(--green-light), var(--green-accent));
@@ -136,7 +182,7 @@
       cursor: pointer; transition: all var(--transition); flex-shrink: 0;
     }
     #action-bar .ab-icon:hover { border-color: var(--green-accent); color: var(--green-accent); }
-    #action-bar .ab-icon.disabled { opacity: 0.35; pointer-events: none; }
+    #action-bar .ab-icon.disabled { opacity: 0.3; pointer-events: none; }
 
     /* ── PRINT / PDF ── */
     @media print {
@@ -194,20 +240,21 @@
     /* ── HERO INTRO ── */
     .hero-intro {
       text-align: center;
-      padding: 28px 0 8px;
+      padding: var(--space-lg) 0 var(--space-md);
     }
     .hero-intro h1 {
-      font-size: clamp(20px, 5vw, 26px);
+      font-size: clamp(22px, 6vw, 28px);
       font-weight: 800;
       color: var(--text-primary);
       letter-spacing: -0.5px;
       line-height: 1.2;
-      margin-bottom: 6px;
+      margin-bottom: var(--space-xs);
     }
     .hero-intro h1 span { color: var(--green-accent); }
     .hero-intro p {
       font-size: 13px;
       color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* ── CARDS ── */
@@ -215,13 +262,13 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 20px;
-      margin-bottom: 12px;
+      padding: var(--space-md);
+      margin-bottom: var(--space-sm);
       transition: background-color 0.3s, border-color 0.3s;
     }
     .card-header {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 18px;
+      display: flex; align-items: center; gap: var(--space-sm);
+      margin-bottom: var(--space-md);
     }
     .card-header-icon {
       width: 32px; height: 32px; border-radius: 8px;
@@ -230,17 +277,18 @@
       font-size: 16px; flex-shrink: 0;
     }
     .card-header-title {
-      font-size: 14px; font-weight: 600;
+      font-size: 13px; font-weight: 700;
       color: var(--text-label); text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.7px;
     }
 
     /* ── FORM FIELDS ── */
-    .field-group { margin-bottom: 16px; }
+    .field-group { margin-bottom: var(--space-md); }
+    .field-group:last-child { margin-bottom: 0; }
     .field-label {
       display: flex; align-items: center; gap: 6px;
       font-size: 13px; font-weight: 500;
-      color: var(--text-label); margin-bottom: 7px;
+      color: var(--text-label); margin-bottom: var(--space-sm);
     }
     .tip {
       width: 17px; height: 17px; border-radius: 50%;
@@ -580,7 +628,7 @@
       </div>
 
       <!-- AD 2 — ABAIXO HEADER -->
-      <div class="ad-strip">
+      <div class="ad-wrap ad-strip">
         <ins class="adsbygoogle" style="display:block"
              data-ad-client="ca-pub-6445553878327741"
              data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -779,7 +827,7 @@
       </div>
 
       <!-- AD 3 — MID FORM -->
-      <div class="ad-strip">
+      <div class="ad-wrap ad-strip">
         <ins class="adsbygoogle" style="display:block"
              data-ad-client="ca-pub-6445553878327741"
              data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -813,7 +861,7 @@
 
 
       <!-- AD 4 — ENTRE FORM E RESULTADOS -->
-      <div class="ad-leader">
+      <div class="ad-wrap ad-leader">
         <ins class="adsbygoogle" style="display:block"
              data-ad-client="ca-pub-6445553878327741"
              data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -838,7 +886,7 @@
         </div>
 
         <!-- AD 5 — APÓS HERO -->
-        <div class="ad-rect">
+        <div class="ad-wrap ad-rect">
           <ins class="adsbygoogle" style="display:block"
                data-ad-client="ca-pub-6445553878327741"
                data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -875,7 +923,7 @@
         </div>
 
         <!-- AD 6 — ENTRE STATS E BARRA -->
-        <div class="ad-leader">
+        <div class="ad-wrap ad-leader">
           <ins class="adsbygoogle" style="display:block"
                data-ad-client="ca-pub-6445553878327741"
                data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -900,7 +948,7 @@
         </div>
 
         <!-- AD 7 — ANTES TABELA -->
-        <div class="ad-rect">
+        <div class="ad-wrap ad-rect">
           <ins class="adsbygoogle" style="display:block"
                data-ad-client="ca-pub-6445553878327741"
                data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -922,7 +970,7 @@
         </div>
 
         <!-- AD 8 — APÓS TABELA -->
-        <div class="ad-rect">
+        <div class="ad-wrap ad-rect">
           <ins class="adsbygoogle" style="display:block"
                data-ad-client="ca-pub-6445553878327741"
                data-ad-format="auto" data-full-width-responsive="true"></ins>
