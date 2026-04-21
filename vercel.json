@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/calculadora-salario-liquido", "destination": "/calculadora-salario", "permanent": true },
+    { "source": "/salario", "destination": "/calculadora-salario", "permanent": true },
+    { "source": "/irs", "destination": "/simulador-irs", "permanent": true },
+    { "source": "/imt", "destination": "/calculadora-imt", "permanent": true },
+    { "source": "/desemprego", "destination": "/subsidio-desemprego", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

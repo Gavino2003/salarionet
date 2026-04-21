@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador IRS 2026 Portugal — Calcula Reembolso ou Valor a Pagar | SalárioNet</title>
+  <meta name="description" content="Simulador IRS 2026 grátis para Portugal. Calcula o teu reembolso ou valor a pagar na declaração de IRS com base nos rendimentos anuais. Tabelas AT atualizadas.">
+  <meta name="keywords" content="simulador IRS 2026, calcular IRS portugal, reembolso IRS 2026, declaração IRS, quanto vou receber IRS, IRS a pagar, tabelas IRS 2026 AT">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="theme-color" content="#0f1512">
+  <meta name="geo.region" content="PT">
+  <meta name="geo.placename" content="Portugal">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://salarionet.vercel.app/simulador-irs/">
+  <link rel="alternate" hreflang="pt-PT" href="https://salarionet.vercel.app/simulador-irs/">
+  <link rel="alternate" hreflang="x-default" href="https://salarionet.vercel.app/simulador-irs/">
+
+  <meta property="og:title" content="Simulador IRS 2026 Portugal — Reembolso ou Valor a Pagar | SalárioNet">
+  <meta property="og:description" content="Calcula o teu reembolso ou valor a pagar na declaração de IRS 2026. Tabelas AT atualizadas, grátis e instantâneo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://salarionet.vercel.app/simulador-irs/">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="og:site_name" content="SalárioNet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simulador IRS 2026 Portugal | SalárioNet">
+  <meta name="twitter:description" content="Calcula o teu reembolso ou valor a pagar no IRS 2026. Grátis e sem registo.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Simulador IRS 2026",
+    "description": "Simulador gratuito para calcular o reembolso ou valor a pagar na declaração de IRS em Portugal 2026.",
+    "url": "https://salarionet.vercel.app/simulador-irs/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "pt-PT"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "SalárioNet", "item": "https://salarionet.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Simulador IRS 2026", "item": "https://salarionet.vercel.app/simulador-irs/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quando é que o IRS é entregue em 2026?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A declaração de IRS relativa aos rendimentos de 2025 deve ser entregue entre 1 de abril e 30 de junho de 2026, via Portal das Finanças." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quando é que o reembolso do IRS é pago em 2026?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Os reembolsos de IRS são tipicamente processados entre maio e agosto. Quem entrega mais cedo e tem declaração automática recebe primeiro." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais são os escalões de IRS em 2026?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Em 2026 existem 9 escalões de IRS em Portugal, com taxas que variam entre 13% (rendimentos até €7.703) e 48% (rendimentos acima de €80.000). Existe ainda a taxa adicional de solidariedade de 2,5% entre €80k e €250k e 5% acima de €250k." }
+      },
+      {
+        "@type": "Question",
+        "name": "O que são deduções à coleta no IRS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "As deduções à coleta reduzem o valor de IRS a pagar. As principais são: saúde (15% das despesas), educação (30%), habitação (15% dos juros), despesas gerais familiares (35%), lares (25%) e exigência de fatura." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6445553878327741" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --green-dark:   #1a472a; --green-mid:    #2d6a4f;
+      --green-light:  #40916c; --green-accent: #52b788;
+      --red: #f87171; --yellow: #fbbf24; --blue: #60a5fa;
+      --bg-primary:   #0f1512; --bg-secondary: #161e18;
+      --bg-card:      #1c2820; --bg-input:     #222e26;
+      --bg-hover:     #2a3a2e;
+      --text-primary: #e8f5e9; --text-secondary:#a5c4aa;
+      --text-muted:   #6b8f72; --text-label:   #c8deca;
+      --border: #2a3a2e; --border-focus: #52b788;
+      --radius-sm: 10px; --radius-md: 14px; --radius-lg: 20px;
+      --transition: 0.2s ease;
+      --rail-w: 160px; --rail-gap: 16px;
+      --space-xs:4px; --space-sm:8px; --space-md:16px; --space-lg:24px; --space-xl:32px;
+    }
+    [data-theme="light"] {
+      --bg-primary:#f4f7f5; --bg-secondary:#fff; --bg-card:#fff;
+      --bg-input:#f0f5f2; --bg-hover:#e8f0eb;
+      --text-primary:#1a2e1e; --text-secondary:#3d5a42;
+      --text-muted:#7a9e82; --text-label:#2d4a32;
+      --border:#d4e6d9; --border-focus:#2d6a4f;
+    }
+    .skip-link { position:absolute;top:-100%;left:8px;background:var(--green-mid);color:#fff;padding:8px 16px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;z-index:9999;text-decoration:none;transition:top .2s; }
+    .skip-link:focus { top:0; }
+    *,*::before,*::after { box-sizing:border-box;margin:0;padding:0; }
+    body { font-family:'Inter',sans-serif;background:var(--bg-primary);color:var(--text-primary);min-height:100vh;transition:background-color .3s,color .3s;line-height:1.6;padding-bottom:76px; }
+    .container { max-width:560px;margin:0 auto;padding:0 16px; }
+    #ad-sticky-top { position:sticky;top:0;z-index:200;background:var(--bg-secondary);border-bottom:1px solid var(--border);text-align:center;transition:background-color .3s;min-height:0; }
+    #ad-sticky-top ins[data-ad-status="unfilled"],#ad-sticky-top ins:empty { display:none!important; }
+    #ad-sticky-top:has(ins[data-ad-status="filled"]) { padding:4px 0; }
+    .ad-wrap { text-align:center;overflow:hidden;min-height:0; }
+    .ad-wrap:empty { display:none; }
+    .ad-wrap ins[data-ad-status="unfilled"] { display:none!important; }
+    .ad-strip { margin:0 0 var(--space-md); }
+    .ad-rect { margin:var(--space-md) 0; }
+    .ad-leader { margin:var(--space-md) 0; }
+    .rail { display:none;position:fixed;top:50%;transform:translateY(-50%);z-index:50; }
+    .rail-left  { left:calc(50% - 280px - var(--rail-w) - var(--rail-gap)); }
+    .rail-right { right:calc(50% - 280px - var(--rail-w) - var(--rail-gap)); }
+    @media (min-width:1060px) { .rail { display:block; } }
+    #action-bar { position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--bg-secondary);border-top:1px solid var(--border);padding:var(--space-sm) var(--space-md);padding-bottom:max(var(--space-sm),env(safe-area-inset-bottom));display:flex;gap:var(--space-sm);align-items:center;box-shadow:0 -4px 24px rgba(0,0,0,.25); }
+    #action-bar .ab-calc { flex:1;padding:14px var(--space-sm);background:linear-gradient(135deg,var(--green-mid),var(--green-light));color:#fff;border:none;border-radius:var(--radius-md);font-size:15px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:all var(--transition);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0; }
+    #action-bar .ab-calc:hover { background:linear-gradient(135deg,var(--green-light),var(--green-accent));box-shadow:0 4px 16px rgba(82,183,136,.35); }
+    #action-bar .ab-icon { width:46px;height:46px;border-radius:var(--radius-sm);background:var(--bg-input);border:1.5px solid var(--border);color:var(--text-secondary);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--transition);flex-shrink:0; }
+    #action-bar .ab-icon:hover { border-color:var(--green-accent);color:var(--green-accent); }
+    #action-bar ins,#action-bar iframe,#action-bar>*:not(button) { display:none!important; }
+    header { background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:14px 0;transition:background-color .3s; }
+    header .container { display:flex;align-items:center;justify-content:space-between; }
+    .logo { display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary); }
+    .logo-icon { width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--green-mid),var(--green-accent));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff; }
+    .logo-text { font-size:18px;font-weight:700; }
+    .logo-text span { color:var(--green-accent); }
+    .theme-toggle { display:flex;align-items:center;gap:6px;background:var(--bg-input);border:1px solid var(--border);border-radius:50px;padding:7px 14px;font-size:13px;font-weight:500;color:var(--text-secondary);font-family:'Inter',sans-serif;cursor:pointer;transition:all var(--transition); }
+    .theme-toggle:hover { border-color:var(--green-accent);color:var(--green-accent); }
+    .breadcrumb { font-size:12px;color:var(--text-muted);padding:10px 0 0;display:flex;align-items:center;gap:6px; }
+    .breadcrumb a { color:var(--text-muted);text-decoration:none; }
+    .breadcrumb a:hover { color:var(--green-accent); }
+    .hero-intro { text-align:center;padding:var(--space-lg) 0 var(--space-md); }
+    .hero-intro h1 { font-size:clamp(22px,6vw,28px);font-weight:800;color:var(--text-primary);letter-spacing:-.5px;line-height:1.2;margin-bottom:var(--space-xs); }
+    .hero-intro h1 span { color:var(--green-accent); }
+    .hero-intro p { font-size:13px;color:var(--text-muted);line-height:1.5; }
+    .card { background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-md);margin-bottom:var(--space-sm);transition:background-color .3s,border-color .3s; }
+    .card-header { display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-md); }
+    .card-header-icon { width:32px;height:32px;border-radius:8px;background:rgba(82,183,136,.12);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0; }
+    .card-header-title { font-size:13px;font-weight:700;color:var(--text-label);text-transform:uppercase;letter-spacing:.7px; }
+    .field-group { margin-bottom:var(--space-md); }
+    .field-group:last-child { margin-bottom:0; }
+    .field-label { display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-label);margin-bottom:var(--space-sm); }
+    .tip { width:17px;height:17px;border-radius:50%;background:var(--bg-hover);border:1px solid var(--border);color:var(--text-muted);font-size:10px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;transition:all var(--transition);z-index:1; }
+    .tip:hover { background:var(--green-mid);color:#fff;border-color:var(--green-mid); }
+    .tip .tip-box { display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1a2e1e;color:#e8f5e9;font-size:12px;font-weight:400;padding:10px 13px;border-radius:var(--radius-sm);width:230px;line-height:1.5;z-index:300;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.5);pointer-events:none; }
+    .tip .tip-box::after { content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1a2e1e; }
+    .tip:hover .tip-box,.tip:focus .tip-box { display:block; }
+    .input-wrap { position:relative;display:flex;align-items:center; }
+    .input-pre { position:absolute;left:13px;font-size:14px;font-weight:500;color:var(--text-muted);pointer-events:none; }
+    input[type="number"],select { width:100%;background:var(--bg-input);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px 14px 13px 34px;font-size:16px;font-family:'Inter',sans-serif;color:var(--text-primary);outline:none;transition:border-color var(--transition),background-color .3s;-moz-appearance:textfield; }
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; }
+    select { padding-left:14px;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8f72' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center; }
+    input[type="number"]:focus,select:focus { border-color:var(--border-focus);background:var(--bg-hover); }
+    .grid-2 { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+    @media (max-width:420px) { .grid-2 { grid-template-columns:1fr; } }
+    .btn-primary { width:100%;padding:15px;background:linear-gradient(135deg,var(--green-mid),var(--green-light));color:#fff;border:none;border-radius:var(--radius-md);font-size:16px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:all var(--transition);letter-spacing:.2px;margin-top:4px; }
+    .btn-primary:hover { background:linear-gradient(135deg,var(--green-light),var(--green-accent));transform:translateY(-1px);box-shadow:0 6px 20px rgba(82,183,136,.3); }
+    .section-label { font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;margin:20px 0 10px; }
+    #results-section { opacity:0;transform:translateY(16px);transition:opacity .4s,transform .4s;pointer-events:none; }
+    #results-section.visible { opacity:1;transform:none;pointer-events:all; }
+    .result-hero { background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:var(--radius-lg);padding:28px 20px;text-align:center;margin-bottom:12px;position:relative;overflow:hidden; }
+    .result-hero.result-reembolso { background:linear-gradient(135deg,#1a3a1a,#2d6a4f); }
+    .result-hero.result-pagar { background:linear-gradient(135deg,#3a1a1a,#6a2d2d); }
+    .result-hero::before { content:'';position:absolute;top:-30%;right:-10%;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05); }
+    .result-hero-label { font-size:11px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px; }
+    .result-hero-value { font-size:clamp(38px,9vw,54px);font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1;margin-bottom:6px; }
+    .result-hero-sub { font-size:13px;color:rgba(255,255,255,.6); }
+    .result-hero-badges { display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:10px; }
+    .hero-badge { background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600; }
+    .stats-row { display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:8px; }
+    .stat-pill { background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-md); }
+    .stat-pill.accent { border-color:var(--green-accent);background:rgba(82,183,136,.06); }
+    .sp-value { font-size:clamp(18px,4vw,22px);font-weight:800;color:var(--text-primary);letter-spacing:-.5px; }
+    .sp-sub { font-size:11px;color:var(--text-muted);margin-top:3px; }
+    .sp-pos { color:var(--green-accent); }
+    .sp-neg { color:var(--red); }
+    .breakdown-table { width:100%;border-collapse:collapse;font-size:13px; }
+    .breakdown-table th,.breakdown-table td { padding:10px 8px;text-align:left;border-bottom:1px solid var(--border); }
+    .breakdown-table th { font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.6px; }
+    .breakdown-table td:last-child { text-align:right;font-weight:600; }
+    .row-total td { font-weight:800;border-top:2px solid var(--border);padding-top:12px; }
+    .row-sub td { color:var(--text-muted);font-size:12px;padding-left:20px; }
+    .row-pos td:last-child { color:var(--green-accent); }
+    .row-neg td:last-child { color:var(--red); }
+    .faq-card .faq-item { border-bottom:1px solid var(--border); }
+    .faq-card .faq-item:last-child { border-bottom:none; }
+    .faq-q { width:100%;background:none;border:none;text-align:left;padding:14px 0;color:var(--text-primary);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px; }
+    .faq-arrow { color:var(--green-accent);transition:transform .2s;flex-shrink:0; }
+    .faq-q[aria-expanded="true"] .faq-arrow { transform:rotate(180deg); }
+    .faq-a { padding:0 0 var(--space-md);color:var(--text-secondary);font-size:13px;line-height:1.7; }
+    #toast { position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg-hover);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 20px;color:var(--text-primary);font-size:14px;opacity:0;pointer-events:none;z-index:1000;transition:opacity .25s,transform .25s;white-space:nowrap; }
+    #toast.show { opacity:1;transform:translateX(-50%) translateY(0); }
+    footer { background:var(--bg-secondary);border-top:1px solid var(--border);padding:var(--space-xl) 0;text-align:center;color:var(--text-muted);font-size:12px;line-height:1.8;transition:background-color .3s; }
+    footer a { color:var(--text-muted); }
+    footer a:hover { color:var(--green-accent); }
+    @media print { #ad-sticky-top,.rail,.ad-wrap,#action-bar { display:none!important; } }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Saltar para o conteúdo</a>
+
+<div id="ad-sticky-top">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6445553878327741" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="rail rail-left">
+  <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-6445553878327741" data-ad-slot="auto"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="rail rail-right">
+  <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-6445553878327741" data-ad-slot="auto"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<header>
+  <div class="container">
+    <a href="/" class="logo" aria-label="SalárioNet — todas as ferramentas">
+      <div class="logo-icon">S</div>
+      <span class="logo-text">Salário<span>Net</span></span>
+    </a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+      <span id="themeIcon">☀️</span>
+      <span id="themeLabel">Claro</span>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="container">
+
+    <nav class="breadcrumb" aria-label="Navegação">
+      <a href="/">SalárioNet</a>
+      <span>›</span>
+      <span>Simulador IRS 2026</span>
+    </nav>
+
+    <div class="ad-wrap ad-strip">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6445553878327741" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="hero-intro">
+      <h1>Simulador <span>IRS 2026</span></h1>
+      <p>Estima o teu reembolso ou valor a pagar na declaração de IRS relativa a 2025. Tabelas AT 2026 atualizadas.</p>
+    </div>
+
+    <!-- Rendimentos -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">💼</div>
+        <span class="card-header-title">Rendimentos</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="rendBruto">
+          Rendimento bruto anual (Categoria A)
+          <span class="tip">?<span class="tip-box">Total de salários + subsídios recebidos em 2025, antes de descontos. Ver IRS/SS no recibo de vencimento × 14 meses se aplicável.</span></span>
+        </label>
+        <div class="input-wrap">
+          <span class="input-pre">€</span>
+          <input type="number" id="rendBruto" min="0" max="999999" step="100" placeholder="21000" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="situacaoFamiliar">
+          Situação familiar
+          <span class="tip">?<span class="tip-box">Solteiro/divorciado, casado com 1 titular de rendimentos, ou casado com 2 titulares (cada cônjuge faz declaração separada ou conjunta).</span></span>
+        </label>
+        <select id="situacaoFamiliar" onchange="onSituacaoChange()">
+          <option value="solteiro">Solteiro / Divorciado / Viúvo</option>
+          <option value="casado1">Casado — 1 Titular</option>
+          <option value="casado2">Casado — 2 Titulares</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="dependentes">
+          Dependentes
+          <span class="tip">?<span class="tip-box">Filhos ou outros dependentes a cargo. Cada dependente dá direito a deduções adicionais.</span></span>
+        </label>
+        <select id="dependentes">
+          <option value="0">Sem dependentes</option>
+          <option value="1">1 dependente</option>
+          <option value="2">2 dependentes</option>
+          <option value="3">3 dependentes</option>
+          <option value="4">4 ou mais dependentes</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Retenções & Deduções -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">🧾</div>
+        <span class="card-header-title">Retenções &amp; Deduções</span>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="retencaoAnual">
+          IRS retido na fonte (anual)
+          <span class="tip">?<span class="tip-box">Soma de todas as retenções de IRS dos teus recibos de vencimento ao longo do ano. Aparece como "Retenção IRS" ou "Imposto" no teu recibo.</span></span>
+        </label>
+        <div class="input-wrap">
+          <span class="input-pre">€</span>
+          <input type="number" id="retencaoAnual" min="0" max="999999" step="10" placeholder="2500" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="deducoesSaude">
+          Despesas de saúde
+          <span class="tip">?<span class="tip-box">Total das despesas de saúde com fatura. A dedução é 15% do valor, até €1.000.</span></span>
+        </label>
+        <div class="input-wrap">
+          <span class="input-pre">€</span>
+          <input type="number" id="deducoesSaude" min="0" max="99999" step="10" placeholder="500" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="deducoesEducacao">
+          Despesas de educação
+          <span class="tip">?<span class="tip-box">Propinas, material escolar, rendas de estudantes deslocados, etc. Dedução de 30%, até €800 (ou €1.000 com dependentes em ensino superior fora da área de residência).</span></span>
+        </label>
+        <div class="input-wrap">
+          <span class="input-pre">€</span>
+          <input type="number" id="deducoesEducacao" min="0" max="99999" step="10" placeholder="0" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="deducoesHabitacao">
+          Juros de habitação própria
+          <span class="tip">?<span class="tip-box">Juros pagos no crédito habitação da habitação própria permanente. Dedução de 15%, até €296. Apenas contratos anteriores a 2012.</span></span>
+        </label>
+        <div class="input-wrap">
+          <span class="input-pre">€</span>
+          <input type="number" id="deducoesHabitacao" min="0" max="99999" step="10" placeholder="0" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="deducoesDGF">
+          Despesas gerais familiares
+          <span class="tip">?<span class="tip-box">Faturas com NIF (supermercados, combustível, restaurantes, etc.). Dedução de 35%, até €250 (€500 para famílias numerosas).</span></span>
+        </label>
+        <div class="input-wrap">
+          <span class="input-pre">€</span>
+          <input type="number" id="deducoesDGF" min="0" max="99999" step="10" placeholder="2000" autocomplete="off">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ad-wrap ad-leader">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6445553878327741" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <button class="btn-primary" onclick="calcularIRS()" aria-label="Simular IRS">Simular IRS 2026</button>
+
+    <!-- Results -->
+    <section id="results-section" aria-live="polite" aria-label="Resultado da simulação">
+
+      <div class="result-hero" id="resultHero">
+        <div class="result-hero-label" id="heroLabel">Resultado</div>
+        <div class="result-hero-value" id="heroValue">—</div>
+        <div class="result-hero-sub" id="heroSub"></div>
+        <div class="result-hero-badges" id="heroBadges"></div>
+      </div>
+
+      <div class="ad-wrap ad-rect">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6445553878327741" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="stats-row" id="statsRow"></div>
+
+      <div class="ad-wrap ad-leader">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6445553878327741" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-header-icon">📋</div>
+          <span class="card-header-title">Detalhes do cálculo</span>
+        </div>
+        <div class="ad-wrap ad-rect">
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6445553878327741" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        <table class="breakdown-table" aria-label="Detalhes">
+          <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+          <tbody id="breakdownBody"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- FAQ -->
+    <section class="card faq-card" aria-label="Perguntas frequentes">
+      <div class="card-header">
+        <div class="card-header-icon">❓</div>
+        <span class="card-header-title">Perguntas Frequentes</span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Quando entregar a declaração de IRS em 2026?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a" hidden>A declaração de IRS relativa aos rendimentos de 2025 deve ser entregue entre 1 de abril e 30 de junho de 2026, via Portal das Finanças (e-fatura).</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Quando é pago o reembolso do IRS?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a" hidden>Os reembolsos são normalmente processados entre maio e agosto. Declarações automáticas e entregues mais cedo são processadas primeiro.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Quais são os escalões de IRS em 2026?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a" hidden>Os escalões de IRS 2026 (rendimento coletável anual) são: até €7.703 → 13%; €7.703–€11.623 → 18%; €11.623–€16.472 → 23%; €16.472–€21.321 → 26%; €21.321–€27.146 → 32,75%; €27.146–€39.791 → 37%; €39.791–€51.997 → 43,5%; €51.997–€80.000 → 45%; acima de €80.000 → 48%.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          O que são deduções à coleta?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a" hidden>As deduções à coleta reduzem diretamente o valor de IRS a pagar. As principais são: saúde (15%, até €1.000), educação (30%, até €800), habitação (15% dos juros, até €296), despesas gerais familiares (35%, até €250) e dependentes (€600 por dependente).</div>
+      </div>
+
+    </section>
+
+    <div class="ad-wrap ad-leader">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6445553878327741" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Link to other tools -->
+    <div class="card" style="text-align:center;padding:var(--space-lg)">
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:var(--space-sm)">Outras ferramentas que podes precisar</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+        <a href="/calculadora-salario/" style="display:inline-block;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;font-size:13px;font-weight:600;color:var(--text-primary);text-decoration:none">💰 Salário Líquido</a>
+        <a href="/calculadora-imt/" style="display:inline-block;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;font-size:13px;font-weight:600;color:var(--text-primary);text-decoration:none">🏡 Calculadora IMT</a>
+        <a href="/subsidio-desemprego/" style="display:inline-block;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;font-size:13px;font-weight:600;color:var(--text-primary);text-decoration:none">📋 Subsídio Desemprego</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="ad-wrap" style="margin-bottom:16px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6445553878327741" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <p><a href="/">SalárioNet</a> — Ferramentas Fiscais Grátis para Portugal</p>
+    <p style="margin-top:4px">Simulação meramente indicativa. Consulta sempre um contabilista ou a AT para a tua declaração real.</p>
+    <p style="margin-top:8px">© 2026 SalárioNet · <a href="/privacidade/">Privacidade</a> · <a href="/termos/">Termos</a></p>
+  </div>
+</footer>
+
+<div id="action-bar">
+  <button class="ab-calc" onclick="calcularIRS()"><span>Simular IRS 2026</span></button>
+  <button class="ab-icon" onclick="partilhar()" aria-label="Partilhar">🔗</button>
+  <button class="ab-icon" onclick="limpar()" aria-label="Limpar">🗑</button>
+  <button class="ab-icon" id="themeToggle2" onclick="toggleTheme()" aria-label="Tema">
+    <span id="themeIcon2">☀️</span>
+  </button>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+
+// ── Theme ──
+(function() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.body.setAttribute('data-theme', saved);
+  updateThemeUI(saved);
+})();
+function updateThemeUI(t) {
+  const d = t === 'dark';
+  document.getElementById('themeIcon').textContent  = d ? '☀️' : '🌙';
+  document.getElementById('themeIcon2').textContent = d ? '☀️' : '🌙';
+  document.getElementById('themeLabel').textContent = d ? 'Claro' : 'Escuro';
+}
+function toggleTheme() {
+  const cur  = document.body.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.body.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeUI(next);
+}
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+function partilhar() {
+  const url = window.location.href;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => showToast('Link copiado!')).catch(() => showToast('Copia o URL manualmente'));
+  } else {
+    showToast('Copia o URL da barra de endereço');
+  }
+}
+function limpar() {
+  ['rendBruto','retencaoAnual','deducoesSaude','deducoesEducacao','deducoesHabitacao','deducoesDGF'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  const r = document.getElementById('results-section');
+  r.classList.remove('visible');
+  showToast('Limpo!');
+}
+function toggleFaq(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', String(!expanded));
+  btn.nextElementSibling.hidden = expanded;
+}
+function onSituacaoChange() {}
+
+function fmt(n, dec = 2) {
+  return n.toLocaleString('pt-PT', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+}
+
+// ── Escalões IRS 2026 (rendimento coletável anual, tabela geral) ──
+// [limite, taxa marginal, parcela a abater]
+const ESCALOES_IRS = [
+  [7703,   0.13,   0],
+  [11623,  0.18,   385.15],
+  [16472,  0.23,   966.30],
+  [21321,  0.26,   1460.46],
+  [27146,  0.3275, 3049.07],  // 32.75%
+  [39791,  0.37,   4275.25],
+  [51997,  0.435,  6867.93],
+  [80000,  0.45,   7648.85],
+  [Infinity, 0.48, 10043.85],
+];
+
+// Deduções específicas por dependente
+const DEDUCAO_DEPENDENTE = 600;
+
+// Dedução específica trabalhador (maior de: €4.104 ou 72% do IAS, até 10% do rendimento bruto, max €4.104)
+const DEDUCAO_ESPECIFICA = 4104;
+
+function calcularColeta(rendColetavel) {
+  for (const [lim, taxa, parcela] of ESCALOES_IRS) {
+    if (rendColetavel <= lim) {
+      return rendColetavel * taxa - parcela;
+    }
+  }
+  return 0;
+}
+
+function calcularIRS() {
+  const rendBruto       = parseFloat(document.getElementById('rendBruto').value)      || 0;
+  const retencao        = parseFloat(document.getElementById('retencaoAnual').value)  || 0;
+  const despSaude       = parseFloat(document.getElementById('deducoesSaude').value)  || 0;
+  const despEducacao    = parseFloat(document.getElementById('deducoesEducacao').value)|| 0;
+  const despHabitacao   = parseFloat(document.getElementById('deducoesHabitacao').value)|| 0;
+  const despDGF         = parseFloat(document.getElementById('deducoesDGF').value)    || 0;
+  const situacao        = document.getElementById('situacaoFamiliar').value;
+  const numDep          = parseInt(document.getElementById('dependentes').value) || 0;
+
+  if (!rendBruto) { showToast('Introduz o rendimento bruto anual'); return; }
+
+  // SS do trabalhador (11%) — dedutível
+  const ss = rendBruto * 0.11;
+
+  // Rendimento coletável
+  let rendColetavel = Math.max(0, rendBruto - DEDUCAO_ESPECIFICA - ss);
+
+  // Para casado 1 titular: divide rendimento por 2, calcula e multiplica (quociente conjugal)
+  let coleta;
+  if (situacao === 'casado1') {
+    const metade = rendColetavel / 2;
+    coleta = calcularColeta(metade) * 2;
+  } else {
+    coleta = calcularColeta(rendColetavel);
+  }
+
+  // Deduções à coleta
+  const dedSaude     = Math.min(despSaude * 0.15, 1000);
+  const dedEducacao  = Math.min(despEducacao * 0.30, 800);
+  const dedHabitacao = Math.min(despHabitacao * 0.15, 296);
+  const dedDGF       = Math.min(despDGF * 0.35, 250);
+  const dedDep       = numDep * DEDUCAO_DEPENDENTE;
+
+  const totalDeducoes = dedSaude + dedEducacao + dedHabitacao + dedDGF + dedDep;
+  const coletaLiquida = Math.max(0, coleta - totalDeducoes);
+
+  // Resultado
+  const diferenca = retencao - coletaLiquida;
+  const isReembolso = diferenca >= 0;
+
+  // UI
+  const heroEl = document.getElementById('resultHero');
+  heroEl.className = 'result-hero ' + (isReembolso ? 'result-reembolso' : 'result-pagar');
+  document.getElementById('heroLabel').textContent = isReembolso ? 'Reembolso estimado' : 'Valor a pagar estimado';
+  document.getElementById('heroValue').textContent = (isReembolso ? '+' : '-') + '€' + fmt(Math.abs(diferenca));
+  document.getElementById('heroSub').textContent   = isReembolso
+    ? 'A AT devolve-te este valor'
+    : 'Terás de pagar este valor à AT';
+
+  const badges = [situacao === 'solteiro' ? 'Solteiro' : situacao === 'casado1' ? 'Casado 1 Titular' : 'Casado 2 Titulares'];
+  if (numDep > 0) badges.push(numDep + ' dependente' + (numDep > 1 ? 's' : ''));
+  document.getElementById('heroBadges').innerHTML = badges.map(b => `<span class="hero-badge">${b}</span>`).join('');
+
+  // Stats
+  document.getElementById('statsRow').innerHTML = `
+    <div class="stat-pill"><div class="sp-value sp-neg">-€${fmt(ss)}</div><div class="sp-sub">Segurança Social (11%)</div></div>
+    <div class="stat-pill"><div class="sp-value">€${fmt(rendColetavel)}</div><div class="sp-sub">Rendimento coletável</div></div>
+    <div class="stat-pill"><div class="sp-value sp-neg">-€${fmt(coleta)}</div><div class="sp-sub">Coleta (IRS bruto)</div></div>
+    <div class="stat-pill accent"><div class="sp-value sp-neg">-€${fmt(totalDeducoes)}</div><div class="sp-sub">Total deduções à coleta</div></div>
+    <div class="stat-pill"><div class="sp-value sp-neg">€${fmt(coletaLiquida)}</div><div class="sp-sub">IRS a pagar (coleta líquida)</div></div>
+    <div class="stat-pill accent"><div class="sp-value ${isReembolso?'sp-pos':'sp-neg'}">${isReembolso?'+':'−'}€${fmt(Math.abs(diferenca))}</div><div class="sp-sub">${isReembolso?'Reembolso':'A pagar'}</div></div>
+  `;
+
+  // Breakdown
+  const rows = [
+    { label: 'Rendimento bruto anual', value: '€' + fmt(rendBruto) },
+    { label: 'Segurança Social (11%)', value: '-€' + fmt(ss), cls: 'row-neg' },
+    { label: 'Dedução específica (€4.104)', value: '-€' + fmt(Math.min(DEDUCAO_ESPECIFICA, rendBruto - ss)), cls: 'row-neg' },
+    { label: 'Rendimento coletável', value: '€' + fmt(rendColetavel), cls: 'row-total' },
+    { label: 'Coleta (IRS sobre rendimento coletável)', value: '€' + fmt(coleta) },
+    { label: 'Ded. saúde (15% de €' + fmt(despSaude) + ')', value: '-€' + fmt(dedSaude), cls: 'row-neg' },
+    { label: 'Ded. educação (30% de €' + fmt(despEducacao) + ')', value: '-€' + fmt(dedEducacao), cls: 'row-neg' },
+    { label: 'Ded. habitação (15% de €' + fmt(despHabitacao) + ')', value: '-€' + fmt(dedHabitacao), cls: 'row-neg' },
+    { label: 'Ded. despesas gerais (35% de €' + fmt(despDGF) + ')', value: '-€' + fmt(dedDGF), cls: 'row-neg' },
+    { label: 'Ded. dependentes (' + numDep + ' × €600)', value: '-€' + fmt(dedDep), cls: 'row-neg' },
+    { label: 'Coleta líquida (IRS a pagar)', value: '€' + fmt(coletaLiquida), cls: 'row-total' },
+    { label: 'IRS retido na fonte', value: '€' + fmt(retencao), cls: 'row-pos' },
+    { label: isReembolso ? '✅ Reembolso' : '⚠️ A pagar à AT',
+      value: (isReembolso ? '+' : '-') + '€' + fmt(Math.abs(diferenca)),
+      cls: 'row-total ' + (isReembolso ? 'row-pos' : 'row-neg') },
+  ];
+
+  document.getElementById('breakdownBody').innerHTML = rows
+    .map(r => `<tr class="${r.cls||''}"><td>${r.label}</td><td>${r.value}</td></tr>`)
+    .join('');
+
+  const sec = document.getElementById('results-section');
+  sec.classList.add('visible');
+  setTimeout(() => sec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') calcularIRS(); });
+</script>
+</body>
+</html>
